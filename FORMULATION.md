@@ -91,3 +91,22 @@ the only residual conditions are the specified range and Boolean conditions.
 The checker is custom Python, not a proof-assistant kernel or independent human
 review. It intentionally reports full-field canonical decomposition as
 assignment/native-output checked only, pending an additional proof rule.
+
+## Exploratory second-round encodings
+
+`arithmetic/fused` enforces `(a+b)*(a−b)=y` directly with arkworks `mul_equals`.
+It removes the intermediate multiplication result and its output equality. This
+is a second application-level improvement, using an existing arkworks API.
+
+`bound-X` has public field x, private Boolean digits, and accepted public relation
+`canonical(x) < X`. Let n=ceil(log2 X), h=2^(n−1), k=X−h. The alternative encoding
+is `x = k*b_(n−1) + sum_(i<n−1) 2^i*b_i`. With Boolean bits the possible integers
+are [0,h−1] union [k,k+h−1] = [0,X−1], with no reduction modulo p. This proves both
+soundness and completeness. Where these intervals overlap, different digit
+witnesses represent the same x; that is allowed. These digits are **not** canonical
+binary decomposition and must not be passed to a consumer requiring canonical bits.
+For X=13, digits (0,0,0,1) represent x=5, not x=8. The baseline performs canonical
+bounded decomposition and `Boolean::enforce_smaller_or_equal_than_le(X−1)`.
+The optimized actual matrices are exhaustively checked over all Boolean digit
+assignments after the Boolean-root lemma; the baseline comparator is only checked
+numerically and retained as trusted upstream code in this trial.

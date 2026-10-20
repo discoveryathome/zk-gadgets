@@ -21,6 +21,7 @@ use ark_r1cs_std::{
     eq::EqGadget,
     fields::{fp::FpVar, FieldVar},
     prelude::ToBitsGadget,
+    R1CSVar,
 };
 use ark_relations::r1cs::{
     ConstraintSynthesizer, ConstraintSystem, ConstraintSystemRef, OptimizationGoal, SynthesisError,
@@ -155,6 +156,11 @@ fn make(family: &str, size: usize, method: &str, p: Arc<PoseidonConfig<Fr>>, see
                 ));
             }
         }
+        "bound" => {
+            let x = (rng.next_u64() % size as u64) as u64;
+            c.a.push(Fr::from(x));
+            c.outputs.push(Fr::from(x));
+        }
         "arithmetic" => {
             for _ in 0..size {
                 let a = Fr::rand(&mut rng);
@@ -276,10 +282,47 @@ impl Circuit {
                     sum.enforce_equal(&out[1])?;
                 }
             }
+            "bound" => {
+                let n = usize::BITS as usize - (self.size - 1).leading_zeros() as usize;
+                let x = &out[0];
+                if self.method == "baseline" {
+                    let bits = bounded(x, n)?;
+                    bind_bits(&bits, "bit", &cs, bind);
+                    Boolean::enforce_smaller_or_equal_than_le(&bits, [(self.size - 1) as u64])?;
+                } else {
+                    let xval = x.value()?.into_bigint().0[0] as usize;
+                    let high = xval >= (1usize << (n - 1));
+                    let rest = if high {
+                        xval - (self.size - (1usize << (n - 1)))
+                    } else {
+                        xval
+                    };
+                    let mut sum = V::zero();
+                    for i in 0..n {
+                        let value = if i == n - 1 {
+                            high
+                        } else {
+                            (rest >> i) & 1 == 1
+                        };
+                        let bit = bit_witness(cs.clone(), value, format!("bit{i}"), bind)?;
+                        let weight = if i == n - 1 {
+                            self.size - (1usize << (n - 1))
+                        } else {
+                            1usize << i
+                        };
+                        sum += V::from(bit) * Fr::from(weight as u64);
+                    }
+                    sum.enforce_equal(x)?;
+                }
+            }
             "arithmetic" => {
                 for i in 0..self.size {
                     let a = witness(cs.clone(), self.a[i], format!("a{i}"), bind)?;
                     let b = witness(cs.clone(), self.b[i], format!("b{i}"), bind)?;
+                    if self.method == "fused" {
+                        (&a + &b).mul_equals(&(&a - &b), &out[i])?;
+                        continue;
+                    }
                     let y = if self.method == "baseline" {
                         a.square()? - b.square()?
                     } else {
@@ -383,14 +426,20 @@ fn main() {
         cases.push(("range", n, vec!["full", "bounded", "optimized"]));
         cases.push(("reuse", n, vec!["baseline", "optimized"]));
     }
-    for n in [1, 4, 16, 64] {
-        cases.push(("arithmetic", n, vec!["baseline", "optimized"]));
+    for n in [1, 4, 7, 16, 31, 64] {
+        cases.push(("arithmetic", n, vec!["baseline", "optimized", "fused"]));
+    }
+    for bound in [13, 29, 53, 181] {
+        cases.push(("bound", bound, vec!["baseline", "optimized"]));
     }
     cases.push(("swap", 1, vec!["baseline", "optimized"]));
     for n in [2, 4, 8, 16] {
         cases.push(("merkle", n, vec!["baseline", "optimized"]));
     }
     cases.push(("composition", 8, vec!["baseline", "optimized"]));
+    if let Ok(families) = std::env::var("PILOT_FAMILIES") {
+        cases.retain(|(f, _, _)| families.split(',').any(|x| x == *f));
+    }
     let mut rows = vec![];
     for (family, n, methods) in cases {
         let seed = 20261020 + n as u64;
@@ -422,9 +471,15 @@ fn main() {
             let file = format!("matrices/{name}.json");
             let costs = export(c, &format!("{dest}/{file}"));
             let mut bad = c.clone();
-            if family == "range" || family == "reuse" { bad.outputs[0] = Fr::from(2u64).pow([n as u64]); } else { bad.outputs[0] += Fr::from(1u64); }
+            if family == "range" || family == "reuse" {
+                bad.outputs[0] = Fr::from(2u64).pow([n as u64]);
+            } else if family == "bound" {
+                bad.outputs[0] = Fr::from(n as u64);
+            } else {
+                bad.outputs[0] += Fr::from(1u64);
+            }
             assert!(!synth(&bad).is_satisfied().unwrap());
-            let row = json!({"instance":format!("{family}-{n}"),"family":family,"size":n,"method":c.method,"seed":seed,"split":if (family=="range"||family=="reuse")&&n==8 || family=="arithmetic"&&n==1 || family=="merkle"&&n==2 || family=="swap" {"development"} else {"held-out"},"cost":costs,"synthesis_ms":measurements[i],"matrix":file,"wrong_public_rejected":true});
+            let row = json!({"instance":format!("{family}-{n}"),"family":family,"size":n,"method":c.method,"seed":seed,"split":if family=="bound"&&n==13 || (family=="range"||family=="reuse")&&n==8 || family=="arithmetic"&&n==1 || family=="merkle"&&n==2 || family=="swap" {"development"} else {"held-out"},"cost":costs,"synthesis_ms":measurements[i],"matrix":file,"wrong_public_rejected":true});
             println!("{}: {} rows", name, costs["constraints"]);
             rows.push(row);
         }
@@ -434,6 +489,9 @@ fn main() {
         serde_json::to_vec_pretty(&rows).unwrap(),
     )
     .unwrap();
+    if std::env::var_os("PILOT_SKIP_PROOFS").is_some() {
+        return;
+    }
     // Groth16 fixed single-thread benchmark. Setup excluded, proof verification included as a check only.
     let mut proofrows = vec![];
     for (family, n) in [("arithmetic", 64), ("merkle", 8), ("composition", 8)] {

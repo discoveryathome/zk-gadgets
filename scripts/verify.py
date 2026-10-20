@@ -8,6 +8,8 @@ It does not read honest assignments when proving the symbolic relation.
 import argparse, copy, hashlib, itertools, json, time
 from collections import defaultdict
 from pathlib import Path
+if not __debug__:
+    raise RuntimeError('Verification requires Python assertions; do not run with -O')
 P = 21888242871839275222246405745257275088548364400416034343698204186575808495617
 
 def clean(d): return {k:v%P for k,v in d.items() if v%P}
@@ -97,7 +99,7 @@ def poseidon_native(values,params,leaf=False):
 
 def expected_bindings(d):
     f,n,m=d['family'],d['size'],d['method']
-    if f=='range':return {f'bit{i}' for i in range(n)}
+    if f in ('range','bound'):return {f'bit{i}' for i in range((n-1).bit_length() if f=='bound' else n)}
     if f=='reuse':return {f'{prefix}{i}' for prefix in ('bit','again') for i in range(n)}
     if f=='arithmetic':return {f'{prefix}{i}' for prefix in ('a','b') for i in range(n)}
     if f=='swap':return {'a0','b0','direction0'}
@@ -108,8 +110,8 @@ def expected_bindings(d):
 def relation_check(d,params):
     assert int(d['field'])==P
     f,n,m=d['family'],d['size'],d['method']; binds=d['bindings']
-    assert f in ('range','reuse','arithmetic','swap','merkle','composition')
-    assert 1<=n<=64
+    assert f in ('range','bound','reuse','arithmetic','swap','merkle','composition')
+    assert 1<=n<=(256 if f=='bound' else 64)
     assert set(binds)==expected_bindings(d), 'interface bindings mismatch'
     independent={k:v for k,v in binds.items() if not (f=='reuse' and m!='baseline' and k.startswith('again'))}
     assert len(set(independent.values()))==len(independent), 'aliased independent inputs'
@@ -121,12 +123,13 @@ def relation_check(d,params):
         assert d['public_count']<i<len(d['assignment']), 'private binding out of bounds'
         if i not in env:env[i]=alg.leaf(i)
         if name.startswith(('bit','again','direction')):required_bool.add(i)
-    if f in ('range','reuse'):env[1]=alg.leaf('x')
+    if f in ('range','reuse','bound'):env[1]=alg.leaf('x')
     ranges=[]
-    if f in ('range','reuse','composition'):
-        length=16 if f=='composition' else n
+    if f in ('range','reuse','bound','composition'):
+        length=16 if f=='composition' else (n-1).bit_length() if f=='bound' else n
         x=env[binds['a0']] if f=='composition' else env[1]
-        ranges.append(sub(x,sum_lc([scale(env[binds[f'bit{i}']],2**i) for i in range(length)])))
+        weights=[(n-2**(length-1)) if f=='bound' and i==length-1 else 2**i for i in range(length)]
+        ranges.append(sub(x,sum_lc([scale(env[binds[f'bit{i}']],weights[i]) for i in range(length)])))
         if f=='reuse' and m=='baseline':ranges.append(sub(x,sum_lc([scale(env[binds[f'again{i}']],2**i) for i in range(n)])))
         assert 2**length<P
     found_ranges=set(); derived=0
@@ -180,8 +183,8 @@ def native_check(d,params):
         for i,v in enumerate(values):
             name=f'{prefix}{i}'
             if name in d['bindings']:assert int(d['assignment'][d['bindings'][name]])==v
-    if f in ('range','reuse'):
-        assert 0<=out[0]<2**n
+    if f in ('range','reuse','bound'):
+        assert 0<=out[0]<(n if f=='bound' else 2**n)
         if f=='reuse':assert out[1]==sum(i+1 for i in range(n) if (out[0]>>i)&1)
     elif f=='arithmetic':assert out==[(x*x-y*y)%P for x,y in zip(a,b)]
     elif f=='swap':assert out==([b[0],a[0]] if bits[0] else [a[0],b[0]])
@@ -227,6 +230,20 @@ def mutant_checks(params,base):
     assert z[1:3] not in ([a,b],[b,a])
     return {'missing_boolean_rejected':True,'satisfying_invalid_witness':{'assignment':list(map(str,z)),'deleted_row':row,'original':'matrices/swap-1-optimized.json','invalid_reason':'direction=2 and outputs are neither permissible ordering'}}
 
+def exhaustive_exported(base):
+    report=[]
+    for file in sorted((base/'matrices').glob('bound-*-optimized.json')):
+        d=json.loads(file.read_text());n=(d['size']-1).bit_length();values=[]
+        assert len(d['assignment'])==n+2
+        for bits in itertools.product((0,1),repeat=n):
+            z=[0]*len(d['assignment']);z[0]=1
+            for i,b in enumerate(bits):z[d['bindings'][f'bit{i}']]=b
+            x=sum(b*((d['size']-2**(n-1)) if i==n-1 else 2**i) for i,b in enumerate(bits))
+            z[1]=x;assert rows_satisfied(d,z);values.append(x)
+        assert set(values)==set(range(d['size']))
+        report.append({'bound':d['size'],'all_boolean_assignments':2**n,'distinct_accepted_values':len(set(values)),'duplicate_witnesses':len(values)-len(set(values)),'field':str(P)})
+    return report
+
 def main():
     ap=argparse.ArgumentParser(); ap.add_argument('--results',default='results'); ap.add_argument('--row'); ap.add_argument('--output'); args=ap.parse_args()
     base=Path(args.results); params=json.loads((base/'poseidon.json').read_text()); rows=json.loads((base/'benchmarks.json').read_text()); reports=[]; start=time.perf_counter()
@@ -237,12 +254,12 @@ def main():
         # Deliberately do not claim a symbolic certificate for canonical full-field
         # decomposition, whose comparison gadget requires a separate proof rule.
         cert=None
-        if not (d['family']=='range' and d['method']=='full'):cert=relation_check(d,params)
+        if not ((d['family']=='range' and d['method']=='full') or (d['family']=='bound' and d['method']=='baseline')):cert=relation_check(d,params)
         for j in range(1,d['public_count']+1):
             z=list(map(int,d['assignment']));z[j]=(z[j]+1)%P;assert not rows_satisfied(d,z)
         reports.append({'instance':row['instance'],'method':row['method'],'assignment_checked':True,'relation_certificate':cert})
         print(row['instance'],row['method'],'relation checked' if cert else 'assignment + native relation only',flush=True)
-    result={'cases':reports,'exhaustive':exhaustive_range(),'negative_control':mutant_checks(params,base),'elapsed_seconds':time.perf_counter()-start}
+    result={'cases':reports,'exhaustive':exhaustive_range(),'exhaustive_exported_bounds':exhaustive_exported(base),'negative_control':mutant_checks(params,base),'elapsed_seconds':time.perf_counter()-start}
     if args.output:Path(args.output).write_text(json.dumps(result,indent=2)+'\n')
     print(f"PASS: {len(reports)} matrices; exhaustive 4096 bit assignments; malicious witness negative control; {result['elapsed_seconds']:.3f}s")
 if __name__=='__main__':main()
