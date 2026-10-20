@@ -110,3 +110,21 @@ bounded decomposition and `Boolean::enforce_smaller_or_equal_than_le(X−1)`.
 The optimized actual matrices are exhaustively checked over all Boolean digit
 assignments after the Boolean-root lemma; the baseline comparator is only checked
 numerically and retained as trusted upstream code in this trial.
+
+## Range-only witness elimination (third round)
+
+For `range/eliminated` or `bound/eliminated`, store only the lower n−1 Boolean
+digits. If their weighted sum is s and the top digit's weight is h, impose
+`(x−s)*(x−s−h)=0`. Because h is nonzero in Fr, the omitted digit is uniquely
+recoverable as `(x−s)/h` and is 0 or 1. This is an explicit witness transformation,
+not a relaxation of the range relation. The accepted public x-set and full digit
+relation (after reconstructing the omitted digit) are unchanged. The candidate
+is a **range predicate**, not an implementation returning arkworks' Boolean vector;
+reusable canonical-bit consumers are still benchmarked separately in `reuse`.
+
+This trades n+1 total rows for n while retaining n multiplication rows. Matrix
+nonzeros can increase. Treat this as progress in the declared total-row metric,
+not automatically in multiplication count, witness-generation time or prover time.
+The relation verifier recognizes the exact residual quadratic, uses its two-root
+factorization over the fixed prime field, and checks all lower-digit Boolean rows.
+Small instances enumerate every root-reduced assignment against the actual matrices.

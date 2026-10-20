@@ -259,6 +259,21 @@ impl Circuit {
         match self.family.as_str() {
             "range" | "reuse" => {
                 let x = &out[0];
+                if self.method == "eliminated" {
+                    let xval = x.value()?.into_bigint().0[0];
+                    let mut low = V::zero();
+                    for i in 0..self.size - 1 {
+                        let bit =
+                            bit_witness(cs.clone(), (xval >> i) & 1 == 1, format!("bit{i}"), bind)?;
+                        low += V::from(bit) * Fr::from(2u64).pow([i as u64]);
+                    }
+                    let delta = x - low;
+                    delta.mul_equals(
+                        &(&delta - Fr::from(2u64).pow([(self.size - 1) as u64])),
+                        &V::zero(),
+                    )?;
+                    return Ok(());
+                }
                 let bits = if self.method == "full" {
                     let bits = x.to_bits_le()?;
                     for bit in &bits[self.size..] {
@@ -298,7 +313,11 @@ impl Circuit {
                         xval
                     };
                     let mut sum = V::zero();
-                    for i in 0..n {
+                    for i in 0..if self.method == "eliminated" {
+                        n - 1
+                    } else {
+                        n
+                    } {
                         let value = if i == n - 1 {
                             high
                         } else {
@@ -312,7 +331,15 @@ impl Circuit {
                         };
                         sum += V::from(bit) * Fr::from(weight as u64);
                     }
-                    sum.enforce_equal(x)?;
+                    if self.method == "eliminated" {
+                        let delta = x - sum;
+                        delta.mul_equals(
+                            &(&delta - Fr::from((self.size - (1usize << (n - 1))) as u64)),
+                            &V::zero(),
+                        )?;
+                    } else {
+                        sum.enforce_equal(x)?;
+                    }
                 }
             }
             "arithmetic" => {
@@ -423,14 +450,23 @@ fn main() {
     fs::write(format!("{dest}/poseidon.json"),serde_json::to_vec_pretty(&json!({"field":Fr::MODULUS.to_string(),"full_rounds":8,"partial_rounds":57,"alpha":5,"rate":2,"capacity":1,"leaf_capacity_offset":"1","ark":p.ark.iter().map(|r|r.iter().map(fsval).collect::<Vec<_>>()).collect::<Vec<_>>(),"mds":p.mds.iter().map(|r|r.iter().map(fsval).collect::<Vec<_>>()).collect::<Vec<_>>()})).unwrap()).unwrap();
     let mut cases = vec![];
     for n in [8, 16, 32, 64] {
-        cases.push(("range", n, vec!["full", "bounded", "optimized"]));
+        cases.push((
+            "range",
+            n,
+            vec!["full", "bounded", "optimized", "eliminated"],
+        ));
         cases.push(("reuse", n, vec!["baseline", "optimized"]));
     }
+    cases.push((
+        "range",
+        5,
+        vec!["full", "bounded", "optimized", "eliminated"],
+    ));
     for n in [1, 4, 7, 16, 31, 64] {
         cases.push(("arithmetic", n, vec!["baseline", "optimized", "fused"]));
     }
-    for bound in [13, 29, 53, 181] {
-        cases.push(("bound", bound, vec!["baseline", "optimized"]));
+    for bound in [13, 29, 53, 93, 181] {
+        cases.push(("bound", bound, vec!["baseline", "optimized", "eliminated"]));
     }
     cases.push(("swap", 1, vec!["baseline", "optimized"]));
     for n in [2, 4, 8, 16] {
@@ -479,7 +515,7 @@ fn main() {
                 bad.outputs[0] += Fr::from(1u64);
             }
             assert!(!synth(&bad).is_satisfied().unwrap());
-            let row = json!({"instance":format!("{family}-{n}"),"family":family,"size":n,"method":c.method,"seed":seed,"split":if family=="bound"&&n==13 || (family=="range"||family=="reuse")&&n==8 || family=="arithmetic"&&n==1 || family=="merkle"&&n==2 || family=="swap" {"development"} else {"held-out"},"cost":costs,"synthesis_ms":measurements[i],"matrix":file,"wrong_public_rejected":true});
+            let row = json!({"instance":format!("{family}-{n}"),"family":family,"size":n,"method":c.method,"seed":seed,"split":if c.method=="eliminated" {if (family=="range"&&n==5)||(family=="bound"&&n==93) {"fresh-confirmation"} else {"validation-reused"}} else if c.method=="fused" {if n==7||n==31 {"fresh-confirmation"} else if n==1 {"development"} else {"validation-reused"}} else if family=="bound"&&n==13 || (family=="range"||family=="reuse")&&n==8 || family=="arithmetic"&&n==1 || family=="merkle"&&n==2 || family=="swap" {"development"} else {"held-out"},"cost":costs,"synthesis_ms":measurements[i],"matrix":file,"wrong_public_rejected":true});
             println!("{}: {} rows", name, costs["constraints"]);
             rows.push(row);
         }

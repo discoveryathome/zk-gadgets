@@ -37,6 +37,16 @@ class VerifierTests(unittest.TestCase):
     def test_wrong_modulus(self):
         d=swap();d['field']='17'
         with self.assertRaises(AssertionError):relation_check(d,{})
+    def test_eliminated_range(self):
+        d={'field':str(P),'family':'range','size':3,'method':'eliminated','public_count':1,
+           'bindings':{'bit0':2,'bit1':3},'assignment':['1','7','1','1'],
+           'a':[[['1',2]],[['1',3]],[['1',1],[str(P-1),2],[str(P-2),3]]],
+           'b':[[['1',2],[str(P-1),0]],[['1',3],[str(P-1),0]],[['1',1],[str(P-1),2],[str(P-2),3],[str(P-4),0]]],
+           'c':[[],[],[]]}
+        self.assertTrue(rows_satisfied(d));relation_check(d,{})
+        d['b'][2][-1]=[str(P-5),0];d['assignment'][1]='8'
+        self.assertTrue(rows_satisfied(d))
+        with self.assertRaisesRegex(AssertionError,'unrecognized residual'):relation_check(d,{})
     def test_exhaustive_bound(self):self.assertEqual(exhaustive_range(8)['all_boolean_assignments'],256)
 
 if __name__=='__main__':unittest.main()

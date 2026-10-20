@@ -99,7 +99,9 @@ def poseidon_native(values,params,leaf=False):
 
 def expected_bindings(d):
     f,n,m=d['family'],d['size'],d['method']
-    if f in ('range','bound'):return {f'bit{i}' for i in range((n-1).bit_length() if f=='bound' else n)}
+    if f in ('range','bound'):
+        length=(n-1).bit_length() if f=='bound' else n
+        return {f'bit{i}' for i in range(length-(m=='eliminated'))}
     if f=='reuse':return {f'{prefix}{i}' for prefix in ('bit','again') for i in range(n)}
     if f=='arithmetic':return {f'{prefix}{i}' for prefix in ('a','b') for i in range(n)}
     if f=='swap':return {'a0','b0','direction0'}
@@ -111,7 +113,7 @@ def relation_check(d,params):
     assert int(d['field'])==P
     f,n,m=d['family'],d['size'],d['method']; binds=d['bindings']
     assert f in ('range','bound','reuse','arithmetic','swap','merkle','composition')
-    assert 1<=n<=(256 if f=='bound' else 64)
+    assert (2 if f=='bound' else 1)<=n<=(256 if f=='bound' else 64)
     assert set(binds)==expected_bindings(d), 'interface bindings mismatch'
     independent={k:v for k,v in binds.items() if not (f=='reuse' and m!='baseline' and k.startswith('again'))}
     assert len(set(independent.values()))==len(independent), 'aliased independent inputs'
@@ -129,7 +131,11 @@ def relation_check(d,params):
         length=16 if f=='composition' else (n-1).bit_length() if f=='bound' else n
         x=env[binds['a0']] if f=='composition' else env[1]
         weights=[(n-2**(length-1)) if f=='bound' and i==length-1 else 2**i for i in range(length)]
-        ranges.append(sub(x,sum_lc([scale(env[binds[f'bit{i}']],weights[i]) for i in range(length)])))
+        if m=='eliminated':
+            delta=sub(x,sum_lc([scale(env[binds[f'bit{i}']],weights[i]) for i in range(length-1)]))
+            ranges.append(alg.mul(delta,sub(delta,const(weights[-1]))))
+        else:
+            ranges.append(sub(x,sum_lc([scale(env[binds[f'bit{i}']],weights[i]) for i in range(length)])))
         if f=='reuse' and m=='baseline':ranges.append(sub(x,sum_lc([scale(env[binds[f'again{i}']],2**i) for i in range(n)])))
         assert 2**length<P
     found_ranges=set(); derived=0
@@ -232,21 +238,32 @@ def mutant_checks(params,base):
 
 def exhaustive_exported(base):
     report=[]
-    for file in sorted((base/'matrices').glob('bound-*-optimized.json')):
-        d=json.loads(file.read_text());n=(d['size']-1).bit_length();values=[]
-        assert len(d['assignment'])==n+2
+    files=list((base/'matrices').glob('bound-*-optimized.json'))+list((base/'matrices').glob('bound-*-eliminated.json'))
+    files+=list((base/'matrices').glob('range-*-eliminated.json'))
+    for file in sorted(files):
+        d=json.loads(file.read_text());n=(d['size']-1).bit_length() if d['family']=='bound' else d['size']
+        if n>12:continue
+        values=[];eliminated=d['method']=='eliminated'
+        assert len(d['assignment'])==n+2-int(eliminated)
         for bits in itertools.product((0,1),repeat=n):
             z=[0]*len(d['assignment']);z[0]=1
-            for i,b in enumerate(bits):z[d['bindings'][f'bit{i}']]=b
-            x=sum(b*((d['size']-2**(n-1)) if i==n-1 else 2**i) for i,b in enumerate(bits))
+            for i,b in enumerate(bits):
+                if i<n-1 or not eliminated:z[d['bindings'][f'bit{i}']]=b
+            x=sum(b*((d['size']-2**(n-1)) if d['family']=='bound' and i==n-1 else 2**i) for i,b in enumerate(bits))
             z[1]=x;assert rows_satisfied(d,z);values.append(x)
-        assert set(values)==set(range(d['size']))
-        report.append({'bound':d['size'],'all_boolean_assignments':2**n,'distinct_accepted_values':len(set(values)),'duplicate_witnesses':len(values)-len(set(values)),'field':str(P)})
+        expected=d['size'] if d['family']=='bound' else 2**n
+        assert set(values)==set(range(expected))
+        report.append({'instance':f"{d['family']}-{d['size']}",'method':d['method'],'all_root_reduced_assignments':2**n,'distinct_accepted_values':len(set(values)),'duplicate_witnesses':len(values)-len(set(values)),'field':str(P)})
     return report
 
 def main():
     ap=argparse.ArgumentParser(); ap.add_argument('--results',default='results'); ap.add_argument('--row'); ap.add_argument('--output'); args=ap.parse_args()
-    base=Path(args.results); params=json.loads((base/'poseidon.json').read_text()); rows=json.loads((base/'benchmarks.json').read_text()); reports=[]; start=time.perf_counter()
+    base=Path(args.results); params=json.loads((base/'poseidon.json').read_text());
+    spec=Path(__file__).resolve().parents[1]/'spec/poseidon.json'
+    if spec.exists():assert params==json.loads(spec.read_text()), 'hash parameters differ from fixed formulation'
+    assert int(params['field'])==P and params['alpha']==5 and params['full_rounds']==8 and params['partial_rounds']==57
+    assert len(params['ark'])==65 and all(len(r)==3 for r in params['ark']) and len(params['mds'])==3
+    rows=json.loads((base/'benchmarks.json').read_text()); reports=[]; start=time.perf_counter();start_cpu=time.process_time()
     for row in rows:
         if args.row and row['instance']!=args.row:continue
         d=json.loads((base/row['matrix']).read_text()); assert rows_satisfied(d); native_check(d,params)
@@ -259,7 +276,13 @@ def main():
             z=list(map(int,d['assignment']));z[j]=(z[j]+1)%P;assert not rows_satisfied(d,z)
         reports.append({'instance':row['instance'],'method':row['method'],'assignment_checked':True,'relation_certificate':cert})
         print(row['instance'],row['method'],'relation checked' if cert else 'assignment + native relation only',flush=True)
-    result={'cases':reports,'exhaustive':exhaustive_range(),'exhaustive_exported_bounds':exhaustive_exported(base),'negative_control':mutant_checks(params,base),'elapsed_seconds':time.perf_counter()-start}
+    if (base/'summary.json').exists():
+        for record in json.loads((base/'summary.json').read_text()):
+            if args.row and record['instance']!=args.row:continue
+            matches=[r for r in rows if r['instance']==record['instance']]
+            actual=min(len(json.loads((base/r['matrix']).read_text())['a']) for r in matches)
+            assert record['value']==actual, 'frontier table count mismatch'
+    result={'cases':reports,'exhaustive':exhaustive_range(),'exhaustive_exported_bounds':exhaustive_exported(base),'negative_control':mutant_checks(params,base),'elapsed_seconds':time.perf_counter()-start,'cpu_seconds':time.process_time()-start_cpu}
     if args.output:Path(args.output).write_text(json.dumps(result,indent=2)+'\n')
     print(f"PASS: {len(reports)} matrices; exhaustive 4096 bit assignments; malicious witness negative control; {result['elapsed_seconds']:.3f}s")
 if __name__=='__main__':main()
