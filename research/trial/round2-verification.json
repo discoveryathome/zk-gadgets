@@ -1,0 +1,657 @@
+{
+  "cases": [
+    {
+      "instance": "range-8",
+      "method": "full",
+      "assignment_checked": true,
+      "relation_certificate": null
+    },
+    {
+      "instance": "range-8",
+      "method": "bounded",
+      "assignment_checked": true,
+      "relation_certificate": {
+        "derived_variables": 0,
+        "boolean_roots_checked": 8,
+        "range_bindings_checked": 1,
+        "expression_nodes": 9
+      }
+    },
+    {
+      "instance": "range-8",
+      "method": "optimized",
+      "assignment_checked": true,
+      "relation_certificate": {
+        "derived_variables": 0,
+        "boolean_roots_checked": 8,
+        "range_bindings_checked": 1,
+        "expression_nodes": 9
+      }
+    },
+    {
+      "instance": "reuse-8",
+      "method": "baseline",
+      "assignment_checked": true,
+      "relation_certificate": {
+        "derived_variables": 1,
+        "boolean_roots_checked": 16,
+        "range_bindings_checked": 2,
+        "expression_nodes": 17
+      }
+    },
+    {
+      "instance": "reuse-8",
+      "method": "optimized",
+      "assignment_checked": true,
+      "relation_certificate": {
+        "derived_variables": 1,
+        "boolean_roots_checked": 8,
+        "range_bindings_checked": 1,
+        "expression_nodes": 9
+      }
+    },
+    {
+      "instance": "range-16",
+      "method": "full",
+      "assignment_checked": true,
+      "relation_certificate": null
+    },
+    {
+      "instance": "range-16",
+      "method": "bounded",
+      "assignment_checked": true,
+      "relation_certificate": {
+        "derived_variables": 0,
+        "boolean_roots_checked": 16,
+        "range_bindings_checked": 1,
+        "expression_nodes": 17
+      }
+    },
+    {
+      "instance": "range-16",
+      "method": "optimized",
+      "assignment_checked": true,
+      "relation_certificate": {
+        "derived_variables": 0,
+        "boolean_roots_checked": 16,
+        "range_bindings_checked": 1,
+        "expression_nodes": 17
+      }
+    },
+    {
+      "instance": "reuse-16",
+      "method": "baseline",
+      "assignment_checked": true,
+      "relation_certificate": {
+        "derived_variables": 1,
+        "boolean_roots_checked": 32,
+        "range_bindings_checked": 2,
+        "expression_nodes": 33
+      }
+    },
+    {
+      "instance": "reuse-16",
+      "method": "optimized",
+      "assignment_checked": true,
+      "relation_certificate": {
+        "derived_variables": 1,
+        "boolean_roots_checked": 16,
+        "range_bindings_checked": 1,
+        "expression_nodes": 17
+      }
+    },
+    {
+      "instance": "range-32",
+      "method": "full",
+      "assignment_checked": true,
+      "relation_certificate": null
+    },
+    {
+      "instance": "range-32",
+      "method": "bounded",
+      "assignment_checked": true,
+      "relation_certificate": {
+        "derived_variables": 0,
+        "boolean_roots_checked": 32,
+        "range_bindings_checked": 1,
+        "expression_nodes": 33
+      }
+    },
+    {
+      "instance": "range-32",
+      "method": "optimized",
+      "assignment_checked": true,
+      "relation_certificate": {
+        "derived_variables": 0,
+        "boolean_roots_checked": 32,
+        "range_bindings_checked": 1,
+        "expression_nodes": 33
+      }
+    },
+    {
+      "instance": "reuse-32",
+      "method": "baseline",
+      "assignment_checked": true,
+      "relation_certificate": {
+        "derived_variables": 1,
+        "boolean_roots_checked": 64,
+        "range_bindings_checked": 2,
+        "expression_nodes": 65
+      }
+    },
+    {
+      "instance": "reuse-32",
+      "method": "optimized",
+      "assignment_checked": true,
+      "relation_certificate": {
+        "derived_variables": 1,
+        "boolean_roots_checked": 32,
+        "range_bindings_checked": 1,
+        "expression_nodes": 33
+      }
+    },
+    {
+      "instance": "range-64",
+      "method": "full",
+      "assignment_checked": true,
+      "relation_certificate": null
+    },
+    {
+      "instance": "range-64",
+      "method": "bounded",
+      "assignment_checked": true,
+      "relation_certificate": {
+        "derived_variables": 0,
+        "boolean_roots_checked": 64,
+        "range_bindings_checked": 1,
+        "expression_nodes": 65
+      }
+    },
+    {
+      "instance": "range-64",
+      "method": "optimized",
+      "assignment_checked": true,
+      "relation_certificate": {
+        "derived_variables": 0,
+        "boolean_roots_checked": 64,
+        "range_bindings_checked": 1,
+        "expression_nodes": 65
+      }
+    },
+    {
+      "instance": "reuse-64",
+      "method": "baseline",
+      "assignment_checked": true,
+      "relation_certificate": {
+        "derived_variables": 1,
+        "boolean_roots_checked": 128,
+        "range_bindings_checked": 2,
+        "expression_nodes": 129
+      }
+    },
+    {
+      "instance": "reuse-64",
+      "method": "optimized",
+      "assignment_checked": true,
+      "relation_certificate": {
+        "derived_variables": 1,
+        "boolean_roots_checked": 64,
+        "range_bindings_checked": 1,
+        "expression_nodes": 65
+      }
+    },
+    {
+      "instance": "arithmetic-1",
+      "method": "baseline",
+      "assignment_checked": true,
+      "relation_certificate": {
+        "derived_variables": 3,
+        "boolean_roots_checked": 0,
+        "range_bindings_checked": 0,
+        "expression_nodes": 4
+      }
+    },
+    {
+      "instance": "arithmetic-1",
+      "method": "optimized",
+      "assignment_checked": true,
+      "relation_certificate": {
+        "derived_variables": 2,
+        "boolean_roots_checked": 0,
+        "range_bindings_checked": 0,
+        "expression_nodes": 5
+      }
+    },
+    {
+      "instance": "arithmetic-4",
+      "method": "baseline",
+      "assignment_checked": true,
+      "relation_certificate": {
+        "derived_variables": 12,
+        "boolean_roots_checked": 0,
+        "range_bindings_checked": 0,
+        "expression_nodes": 16
+      }
+    },
+    {
+      "instance": "arithmetic-4",
+      "method": "optimized",
+      "assignment_checked": true,
+      "relation_certificate": {
+        "derived_variables": 8,
+        "boolean_roots_checked": 0,
+        "range_bindings_checked": 0,
+        "expression_nodes": 20
+      }
+    },
+    {
+      "instance": "arithmetic-16",
+      "method": "baseline",
+      "assignment_checked": true,
+      "relation_certificate": {
+        "derived_variables": 48,
+        "boolean_roots_checked": 0,
+        "range_bindings_checked": 0,
+        "expression_nodes": 64
+      }
+    },
+    {
+      "instance": "arithmetic-16",
+      "method": "optimized",
+      "assignment_checked": true,
+      "relation_certificate": {
+        "derived_variables": 32,
+        "boolean_roots_checked": 0,
+        "range_bindings_checked": 0,
+        "expression_nodes": 80
+      }
+    },
+    {
+      "instance": "arithmetic-64",
+      "method": "baseline",
+      "assignment_checked": true,
+      "relation_certificate": {
+        "derived_variables": 192,
+        "boolean_roots_checked": 0,
+        "range_bindings_checked": 0,
+        "expression_nodes": 256
+      }
+    },
+    {
+      "instance": "arithmetic-64",
+      "method": "optimized",
+      "assignment_checked": true,
+      "relation_certificate": {
+        "derived_variables": 128,
+        "boolean_roots_checked": 0,
+        "range_bindings_checked": 0,
+        "expression_nodes": 320
+      }
+    },
+    {
+      "instance": "swap-1",
+      "method": "baseline",
+      "assignment_checked": true,
+      "relation_certificate": {
+        "derived_variables": 4,
+        "boolean_roots_checked": 1,
+        "range_bindings_checked": 0,
+        "expression_nodes": 5
+      }
+    },
+    {
+      "instance": "swap-1",
+      "method": "optimized",
+      "assignment_checked": true,
+      "relation_certificate": {
+        "derived_variables": 3,
+        "boolean_roots_checked": 1,
+        "range_bindings_checked": 0,
+        "expression_nodes": 5
+      }
+    },
+    {
+      "instance": "merkle-2",
+      "method": "baseline",
+      "assignment_checked": true,
+      "relation_certificate": {
+        "derived_variables": 722,
+        "boolean_roots_checked": 2,
+        "range_bindings_checked": 0,
+        "expression_nodes": 730
+      }
+    },
+    {
+      "instance": "merkle-2",
+      "method": "optimized",
+      "assignment_checked": true,
+      "relation_certificate": {
+        "derived_variables": 720,
+        "boolean_roots_checked": 2,
+        "range_bindings_checked": 0,
+        "expression_nodes": 730
+      }
+    },
+    {
+      "instance": "merkle-4",
+      "method": "baseline",
+      "assignment_checked": true,
+      "relation_certificate": {
+        "derived_variables": 1206,
+        "boolean_roots_checked": 4,
+        "range_bindings_checked": 0,
+        "expression_nodes": 1222
+      }
+    },
+    {
+      "instance": "merkle-4",
+      "method": "optimized",
+      "assignment_checked": true,
+      "relation_certificate": {
+        "derived_variables": 1202,
+        "boolean_roots_checked": 4,
+        "range_bindings_checked": 0,
+        "expression_nodes": 1222
+      }
+    },
+    {
+      "instance": "merkle-8",
+      "method": "baseline",
+      "assignment_checked": true,
+      "relation_certificate": {
+        "derived_variables": 2174,
+        "boolean_roots_checked": 8,
+        "range_bindings_checked": 0,
+        "expression_nodes": 2206
+      }
+    },
+    {
+      "instance": "merkle-8",
+      "method": "optimized",
+      "assignment_checked": true,
+      "relation_certificate": {
+        "derived_variables": 2166,
+        "boolean_roots_checked": 8,
+        "range_bindings_checked": 0,
+        "expression_nodes": 2206
+      }
+    },
+    {
+      "instance": "merkle-16",
+      "method": "baseline",
+      "assignment_checked": true,
+      "relation_certificate": {
+        "derived_variables": 4110,
+        "boolean_roots_checked": 16,
+        "range_bindings_checked": 0,
+        "expression_nodes": 4174
+      }
+    },
+    {
+      "instance": "merkle-16",
+      "method": "optimized",
+      "assignment_checked": true,
+      "relation_certificate": {
+        "derived_variables": 4094,
+        "boolean_roots_checked": 16,
+        "range_bindings_checked": 0,
+        "expression_nodes": 4174
+      }
+    },
+    {
+      "instance": "composition-8",
+      "method": "baseline",
+      "assignment_checked": true,
+      "relation_certificate": {
+        "derived_variables": 2177,
+        "boolean_roots_checked": 24,
+        "range_bindings_checked": 1,
+        "expression_nodes": 2224
+      }
+    },
+    {
+      "instance": "composition-8",
+      "method": "optimized",
+      "assignment_checked": true,
+      "relation_certificate": {
+        "derived_variables": 2168,
+        "boolean_roots_checked": 24,
+        "range_bindings_checked": 1,
+        "expression_nodes": 2225
+      }
+    },
+    {
+      "instance": "arithmetic-1",
+      "method": "fused",
+      "assignment_checked": true,
+      "relation_certificate": {
+        "derived_variables": 1,
+        "boolean_roots_checked": 0,
+        "range_bindings_checked": 0,
+        "expression_nodes": 5
+      }
+    },
+    {
+      "instance": "arithmetic-4",
+      "method": "fused",
+      "assignment_checked": true,
+      "relation_certificate": {
+        "derived_variables": 4,
+        "boolean_roots_checked": 0,
+        "range_bindings_checked": 0,
+        "expression_nodes": 20
+      }
+    },
+    {
+      "instance": "arithmetic-7",
+      "method": "baseline",
+      "assignment_checked": true,
+      "relation_certificate": {
+        "derived_variables": 21,
+        "boolean_roots_checked": 0,
+        "range_bindings_checked": 0,
+        "expression_nodes": 28
+      }
+    },
+    {
+      "instance": "arithmetic-7",
+      "method": "optimized",
+      "assignment_checked": true,
+      "relation_certificate": {
+        "derived_variables": 14,
+        "boolean_roots_checked": 0,
+        "range_bindings_checked": 0,
+        "expression_nodes": 35
+      }
+    },
+    {
+      "instance": "arithmetic-7",
+      "method": "fused",
+      "assignment_checked": true,
+      "relation_certificate": {
+        "derived_variables": 7,
+        "boolean_roots_checked": 0,
+        "range_bindings_checked": 0,
+        "expression_nodes": 35
+      }
+    },
+    {
+      "instance": "arithmetic-16",
+      "method": "fused",
+      "assignment_checked": true,
+      "relation_certificate": {
+        "derived_variables": 16,
+        "boolean_roots_checked": 0,
+        "range_bindings_checked": 0,
+        "expression_nodes": 80
+      }
+    },
+    {
+      "instance": "arithmetic-31",
+      "method": "baseline",
+      "assignment_checked": true,
+      "relation_certificate": {
+        "derived_variables": 93,
+        "boolean_roots_checked": 0,
+        "range_bindings_checked": 0,
+        "expression_nodes": 124
+      }
+    },
+    {
+      "instance": "arithmetic-31",
+      "method": "optimized",
+      "assignment_checked": true,
+      "relation_certificate": {
+        "derived_variables": 62,
+        "boolean_roots_checked": 0,
+        "range_bindings_checked": 0,
+        "expression_nodes": 155
+      }
+    },
+    {
+      "instance": "arithmetic-31",
+      "method": "fused",
+      "assignment_checked": true,
+      "relation_certificate": {
+        "derived_variables": 31,
+        "boolean_roots_checked": 0,
+        "range_bindings_checked": 0,
+        "expression_nodes": 155
+      }
+    },
+    {
+      "instance": "arithmetic-64",
+      "method": "fused",
+      "assignment_checked": true,
+      "relation_certificate": {
+        "derived_variables": 64,
+        "boolean_roots_checked": 0,
+        "range_bindings_checked": 0,
+        "expression_nodes": 320
+      }
+    },
+    {
+      "instance": "bound-13",
+      "method": "baseline",
+      "assignment_checked": true,
+      "relation_certificate": null
+    },
+    {
+      "instance": "bound-13",
+      "method": "optimized",
+      "assignment_checked": true,
+      "relation_certificate": {
+        "derived_variables": 0,
+        "boolean_roots_checked": 4,
+        "range_bindings_checked": 1,
+        "expression_nodes": 5
+      }
+    },
+    {
+      "instance": "bound-29",
+      "method": "baseline",
+      "assignment_checked": true,
+      "relation_certificate": null
+    },
+    {
+      "instance": "bound-29",
+      "method": "optimized",
+      "assignment_checked": true,
+      "relation_certificate": {
+        "derived_variables": 0,
+        "boolean_roots_checked": 5,
+        "range_bindings_checked": 1,
+        "expression_nodes": 6
+      }
+    },
+    {
+      "instance": "bound-53",
+      "method": "baseline",
+      "assignment_checked": true,
+      "relation_certificate": null
+    },
+    {
+      "instance": "bound-53",
+      "method": "optimized",
+      "assignment_checked": true,
+      "relation_certificate": {
+        "derived_variables": 0,
+        "boolean_roots_checked": 6,
+        "range_bindings_checked": 1,
+        "expression_nodes": 7
+      }
+    },
+    {
+      "instance": "bound-181",
+      "method": "baseline",
+      "assignment_checked": true,
+      "relation_certificate": null
+    },
+    {
+      "instance": "bound-181",
+      "method": "optimized",
+      "assignment_checked": true,
+      "relation_certificate": {
+        "derived_variables": 0,
+        "boolean_roots_checked": 8,
+        "range_bindings_checked": 1,
+        "expression_nodes": 9
+      }
+    }
+  ],
+  "exhaustive": {
+    "bits": 12,
+    "all_boolean_assignments": 4096,
+    "invalid_satisfying_assignments": 0,
+    "field": "21888242871839275222246405745257275088548364400416034343698204186575808495617",
+    "method": "exhaustive after exact Boolean-root and linear-output elimination"
+  },
+  "exhaustive_exported_bounds": [
+    {
+      "bound": 13,
+      "all_boolean_assignments": 16,
+      "distinct_accepted_values": 13,
+      "duplicate_witnesses": 3,
+      "field": "21888242871839275222246405745257275088548364400416034343698204186575808495617"
+    },
+    {
+      "bound": 181,
+      "all_boolean_assignments": 256,
+      "distinct_accepted_values": 181,
+      "duplicate_witnesses": 75,
+      "field": "21888242871839275222246405745257275088548364400416034343698204186575808495617"
+    },
+    {
+      "bound": 29,
+      "all_boolean_assignments": 32,
+      "distinct_accepted_values": 29,
+      "duplicate_witnesses": 3,
+      "field": "21888242871839275222246405745257275088548364400416034343698204186575808495617"
+    },
+    {
+      "bound": 53,
+      "all_boolean_assignments": 64,
+      "distinct_accepted_values": 53,
+      "duplicate_witnesses": 11,
+      "field": "21888242871839275222246405745257275088548364400416034343698204186575808495617"
+    }
+  ],
+  "negative_control": {
+    "missing_boolean_rejected": true,
+    "satisfying_invalid_witness": {
+      "assignment": [
+        "1",
+        "10360817460191329037721615992112752680230409983173372216262431394569606527013",
+        "3852357633322342305651822617733914720252200888215813302945911464189521120638",
+        "20614006156838188031172690906031710765943846853479022503183554232033421919841",
+        "15487411808514758534447153449072231723087128418326197359722992813301514223427",
+        "2",
+        "10360817460191329037721615992112752680230409983173372216262431394569606527013"
+      ],
+      "deleted_row": 0,
+      "original": "matrices/swap-1-optimized.json",
+      "invalid_reason": "direction=2 and outputs are neither permissible ordering"
+    }
+  },
+  "elapsed_seconds": 290.42131762509234
+}

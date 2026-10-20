@@ -1,0 +1,877 @@
+[
+  {
+    "cost": {
+      "constraints": 886,
+      "multiplication_rows": 485,
+      "nonzeros": 2690,
+      "witness_variables": 485
+    },
+    "family": "range",
+    "instance": "range-8",
+    "matrix": "matrices/range-8-full.json",
+    "method": "full",
+    "seed": 20261028,
+    "size": 8,
+    "split": "development",
+    "synthesis_ms": [
+      2.132541,
+      1.524542,
+      2.2595419999999997,
+      1.580584,
+      2.2225,
+      3.4710840000000003,
+      3.2522089999999997
+    ],
+    "wrong_public_rejected": true
+  },
+  {
+    "cost": {
+      "constraints": 9,
+      "multiplication_rows": 8,
+      "nonzeros": 34,
+      "witness_variables": 8
+    },
+    "family": "range",
+    "instance": "range-8",
+    "matrix": "matrices/range-8-bounded.json",
+    "method": "bounded",
+    "seed": 20261028,
+    "size": 8,
+    "split": "development",
+    "synthesis_ms": [
+      0.043083,
+      0.022084,
+      0.054,
+      0.024666999999999998,
+      0.037583000000000005,
+      0.020832999999999997,
+      0.047208
+    ],
+    "wrong_public_rejected": true
+  },
+  {
+    "cost": {
+      "constraints": 9,
+      "multiplication_rows": 8,
+      "nonzeros": 34,
+      "witness_variables": 8
+    },
+    "family": "range",
+    "instance": "range-8",
+    "matrix": "matrices/range-8-optimized.json",
+    "method": "optimized",
+    "seed": 20261028,
+    "size": 8,
+    "split": "development",
+    "synthesis_ms": [
+      0.024334,
+      0.024541,
+      0.034666999999999996,
+      0.022417,
+      0.037917000000000006,
+      0.022375,
+      0.030166
+    ],
+    "wrong_public_rejected": true
+  },
+  {
+    "cost": {
+      "constraints": 8,
+      "multiplication_rows": 8,
+      "nonzeros": 38,
+      "witness_variables": 7
+    },
+    "family": "range",
+    "instance": "range-8",
+    "matrix": "matrices/range-8-eliminated.json",
+    "method": "eliminated",
+    "seed": 20261028,
+    "size": 8,
+    "split": "validation-reused",
+    "synthesis_ms": [
+      0.031166,
+      0.030750000000000003,
+      0.032083,
+      0.02525,
+      0.03125,
+      0.024916,
+      0.041916999999999996
+    ],
+    "wrong_public_rejected": true
+  },
+  {
+    "cost": {
+      "constraints": 878,
+      "multiplication_rows": 485,
+      "nonzeros": 2674,
+      "witness_variables": 485
+    },
+    "family": "range",
+    "instance": "range-16",
+    "matrix": "matrices/range-16-full.json",
+    "method": "full",
+    "seed": 20261036,
+    "size": 16,
+    "split": "held-out",
+    "synthesis_ms": [
+      1.500208,
+      1.9788750000000002,
+      1.422292,
+      5.953542,
+      1.490375,
+      37.193042000000005,
+      7.437
+    ],
+    "wrong_public_rejected": true
+  },
+  {
+    "cost": {
+      "constraints": 17,
+      "multiplication_rows": 16,
+      "nonzeros": 66,
+      "witness_variables": 16
+    },
+    "family": "range",
+    "instance": "range-16",
+    "matrix": "matrices/range-16-bounded.json",
+    "method": "bounded",
+    "seed": 20261036,
+    "size": 16,
+    "split": "held-out",
+    "synthesis_ms": [
+      0.051583,
+      0.040583,
+      0.07179200000000001,
+      0.0405,
+      49.785833000000004,
+      0.882417,
+      0.083167
+    ],
+    "wrong_public_rejected": true
+  },
+  {
+    "cost": {
+      "constraints": 17,
+      "multiplication_rows": 16,
+      "nonzeros": 66,
+      "witness_variables": 16
+    },
+    "family": "range",
+    "instance": "range-16",
+    "matrix": "matrices/range-16-optimized.json",
+    "method": "optimized",
+    "seed": 20261036,
+    "size": 16,
+    "split": "held-out",
+    "synthesis_ms": [
+      0.041999999999999996,
+      0.044792,
+      0.047375,
+      0.0415,
+      2.773041,
+      1.39175,
+      0.0555
+    ],
+    "wrong_public_rejected": true
+  },
+  {
+    "cost": {
+      "constraints": 16,
+      "multiplication_rows": 16,
+      "nonzeros": 78,
+      "witness_variables": 15
+    },
+    "family": "range",
+    "instance": "range-16",
+    "matrix": "matrices/range-16-eliminated.json",
+    "method": "eliminated",
+    "seed": 20261036,
+    "size": 16,
+    "split": "validation-reused",
+    "synthesis_ms": [
+      0.08462499999999999,
+      0.06245800000000001,
+      0.064,
+      0.056875,
+      0.10575,
+      3.2425,
+      0.247417
+    ],
+    "wrong_public_rejected": true
+  },
+  {
+    "cost": {
+      "constraints": 862,
+      "multiplication_rows": 485,
+      "nonzeros": 2642,
+      "witness_variables": 485
+    },
+    "family": "range",
+    "instance": "range-32",
+    "matrix": "matrices/range-32-full.json",
+    "method": "full",
+    "seed": 20261052,
+    "size": 32,
+    "split": "held-out",
+    "synthesis_ms": [
+      2.949125,
+      13.502167,
+      23.108832999999997,
+      1.490875,
+      3.309916,
+      2.5553749999999997,
+      2.205584
+    ],
+    "wrong_public_rejected": true
+  },
+  {
+    "cost": {
+      "constraints": 33,
+      "multiplication_rows": 32,
+      "nonzeros": 130,
+      "witness_variables": 32
+    },
+    "family": "range",
+    "instance": "range-32",
+    "matrix": "matrices/range-32-bounded.json",
+    "method": "bounded",
+    "seed": 20261052,
+    "size": 32,
+    "split": "held-out",
+    "synthesis_ms": [
+      0.151917,
+      0.08383299999999999,
+      0.146666,
+      0.08762500000000001,
+      0.14100000000000001,
+      0.154042,
+      0.161042
+    ],
+    "wrong_public_rejected": true
+  },
+  {
+    "cost": {
+      "constraints": 33,
+      "multiplication_rows": 32,
+      "nonzeros": 130,
+      "witness_variables": 32
+    },
+    "family": "range",
+    "instance": "range-32",
+    "matrix": "matrices/range-32-optimized.json",
+    "method": "optimized",
+    "seed": 20261052,
+    "size": 32,
+    "split": "held-out",
+    "synthesis_ms": [
+      0.10183299999999999,
+      0.090125,
+      0.095458,
+      0.10070799999999999,
+      0.113459,
+      0.120708,
+      0.113875
+    ],
+    "wrong_public_rejected": true
+  },
+  {
+    "cost": {
+      "constraints": 32,
+      "multiplication_rows": 32,
+      "nonzeros": 158,
+      "witness_variables": 31
+    },
+    "family": "range",
+    "instance": "range-32",
+    "matrix": "matrices/range-32-eliminated.json",
+    "method": "eliminated",
+    "seed": 20261052,
+    "size": 32,
+    "split": "validation-reused",
+    "synthesis_ms": [
+      0.175583,
+      0.148292,
+      0.17016599999999998,
+      0.3945,
+      0.191042,
+      0.720208,
+      0.188084
+    ],
+    "wrong_public_rejected": true
+  },
+  {
+    "cost": {
+      "constraints": 830,
+      "multiplication_rows": 485,
+      "nonzeros": 2578,
+      "witness_variables": 485
+    },
+    "family": "range",
+    "instance": "range-64",
+    "matrix": "matrices/range-64-full.json",
+    "method": "full",
+    "seed": 20261084,
+    "size": 64,
+    "split": "held-out",
+    "synthesis_ms": [
+      1.423459,
+      2.973,
+      19.685666,
+      15.648459,
+      3.089042,
+      27.540084,
+      13.521959
+    ],
+    "wrong_public_rejected": true
+  },
+  {
+    "cost": {
+      "constraints": 65,
+      "multiplication_rows": 64,
+      "nonzeros": 258,
+      "witness_variables": 64
+    },
+    "family": "range",
+    "instance": "range-64",
+    "matrix": "matrices/range-64-bounded.json",
+    "method": "bounded",
+    "seed": 20261084,
+    "size": 64,
+    "split": "held-out",
+    "synthesis_ms": [
+      0.18025,
+      0.1685,
+      0.272125,
+      0.194459,
+      0.20583400000000002,
+      53.737708000000005,
+      2.3083750000000003
+    ],
+    "wrong_public_rejected": true
+  },
+  {
+    "cost": {
+      "constraints": 65,
+      "multiplication_rows": 64,
+      "nonzeros": 258,
+      "witness_variables": 64
+    },
+    "family": "range",
+    "instance": "range-64",
+    "matrix": "matrices/range-64-optimized.json",
+    "method": "optimized",
+    "seed": 20261084,
+    "size": 64,
+    "split": "held-out",
+    "synthesis_ms": [
+      0.165875,
+      0.173541,
+      31.567791999999997,
+      9.143167,
+      0.17216599999999999,
+      35.196,
+      3.853583
+    ],
+    "wrong_public_rejected": true
+  },
+  {
+    "cost": {
+      "constraints": 64,
+      "multiplication_rows": 64,
+      "nonzeros": 318,
+      "witness_variables": 63
+    },
+    "family": "range",
+    "instance": "range-64",
+    "matrix": "matrices/range-64-eliminated.json",
+    "method": "eliminated",
+    "seed": 20261084,
+    "size": 64,
+    "split": "validation-reused",
+    "synthesis_ms": [
+      0.678084,
+      0.34391700000000003,
+      4.566833,
+      8.669583,
+      0.352458,
+      0.331,
+      11.422208999999999
+    ],
+    "wrong_public_rejected": true
+  },
+  {
+    "cost": {
+      "constraints": 889,
+      "multiplication_rows": 485,
+      "nonzeros": 2696,
+      "witness_variables": 485
+    },
+    "family": "range",
+    "instance": "range-5",
+    "matrix": "matrices/range-5-full.json",
+    "method": "full",
+    "seed": 20261025,
+    "size": 5,
+    "split": "held-out",
+    "synthesis_ms": [
+      1.609709,
+      1.634375,
+      1.971834,
+      2.705833,
+      2.38825,
+      1.471792,
+      2.491209
+    ],
+    "wrong_public_rejected": true
+  },
+  {
+    "cost": {
+      "constraints": 6,
+      "multiplication_rows": 5,
+      "nonzeros": 22,
+      "witness_variables": 5
+    },
+    "family": "range",
+    "instance": "range-5",
+    "matrix": "matrices/range-5-bounded.json",
+    "method": "bounded",
+    "seed": 20261025,
+    "size": 5,
+    "split": "held-out",
+    "synthesis_ms": [
+      0.030125,
+      0.014208,
+      0.032666999999999995,
+      0.013917,
+      0.041708,
+      0.013875,
+      0.039583
+    ],
+    "wrong_public_rejected": true
+  },
+  {
+    "cost": {
+      "constraints": 6,
+      "multiplication_rows": 5,
+      "nonzeros": 22,
+      "witness_variables": 5
+    },
+    "family": "range",
+    "instance": "range-5",
+    "matrix": "matrices/range-5-optimized.json",
+    "method": "optimized",
+    "seed": 20261025,
+    "size": 5,
+    "split": "held-out",
+    "synthesis_ms": [
+      0.01575,
+      0.014792,
+      0.015834,
+      0.014834,
+      0.016125,
+      0.014875000000000001,
+      0.0165
+    ],
+    "wrong_public_rejected": true
+  },
+  {
+    "cost": {
+      "constraints": 5,
+      "multiplication_rows": 5,
+      "nonzeros": 23,
+      "witness_variables": 4
+    },
+    "family": "range",
+    "instance": "range-5",
+    "matrix": "matrices/range-5-eliminated.json",
+    "method": "eliminated",
+    "seed": 20261025,
+    "size": 5,
+    "split": "fresh-confirmation",
+    "synthesis_ms": [
+      0.019208999999999997,
+      0.014167,
+      0.021832999999999998,
+      0.014333,
+      0.021208,
+      0.014084,
+      0.022
+    ],
+    "wrong_public_rejected": true
+  },
+  {
+    "cost": {
+      "constraints": 10,
+      "multiplication_rows": 7,
+      "nonzeros": 31,
+      "witness_variables": 7
+    },
+    "family": "bound",
+    "instance": "bound-13",
+    "matrix": "matrices/bound-13-baseline.json",
+    "method": "baseline",
+    "seed": 20261033,
+    "size": 13,
+    "split": "development",
+    "synthesis_ms": [
+      0.030957999999999996,
+      0.026333,
+      0.019833,
+      0.01975,
+      0.018084000000000003,
+      0.018000000000000002,
+      0.017791
+    ],
+    "wrong_public_rejected": true
+  },
+  {
+    "cost": {
+      "constraints": 5,
+      "multiplication_rows": 4,
+      "nonzeros": 18,
+      "witness_variables": 4
+    },
+    "family": "bound",
+    "instance": "bound-13",
+    "matrix": "matrices/bound-13-optimized.json",
+    "method": "optimized",
+    "seed": 20261033,
+    "size": 13,
+    "split": "development",
+    "synthesis_ms": [
+      0.014041,
+      0.136083,
+      0.012958,
+      0.012291,
+      0.011375,
+      0.011375,
+      0.011250000000000001
+    ],
+    "wrong_public_rejected": true
+  },
+  {
+    "cost": {
+      "constraints": 4,
+      "multiplication_rows": 4,
+      "nonzeros": 18,
+      "witness_variables": 3
+    },
+    "family": "bound",
+    "instance": "bound-13",
+    "matrix": "matrices/bound-13-eliminated.json",
+    "method": "eliminated",
+    "seed": 20261033,
+    "size": 13,
+    "split": "validation-reused",
+    "synthesis_ms": [
+      0.023833,
+      0.010083,
+      0.014167,
+      0.013208,
+      0.012333,
+      0.011250000000000001,
+      0.011333
+    ],
+    "wrong_public_rejected": true
+  },
+  {
+    "cost": {
+      "constraints": 12,
+      "multiplication_rows": 9,
+      "nonzeros": 46,
+      "witness_variables": 9
+    },
+    "family": "bound",
+    "instance": "bound-29",
+    "matrix": "matrices/bound-29-baseline.json",
+    "method": "baseline",
+    "seed": 20261049,
+    "size": 29,
+    "split": "held-out",
+    "synthesis_ms": [
+      0.030667000000000003,
+      0.029708000000000002,
+      0.028249999999999997,
+      0.02875,
+      0.027958,
+      0.043667,
+      0.028041
+    ],
+    "wrong_public_rejected": true
+  },
+  {
+    "cost": {
+      "constraints": 6,
+      "multiplication_rows": 5,
+      "nonzeros": 22,
+      "witness_variables": 5
+    },
+    "family": "bound",
+    "instance": "bound-29",
+    "matrix": "matrices/bound-29-optimized.json",
+    "method": "optimized",
+    "seed": 20261049,
+    "size": 29,
+    "split": "held-out",
+    "synthesis_ms": [
+      0.013167,
+      0.012292,
+      0.012541,
+      0.012417,
+      0.012707999999999999,
+      0.012083,
+      0.012417
+    ],
+    "wrong_public_rejected": true
+  },
+  {
+    "cost": {
+      "constraints": 5,
+      "multiplication_rows": 5,
+      "nonzeros": 23,
+      "witness_variables": 4
+    },
+    "family": "bound",
+    "instance": "bound-29",
+    "matrix": "matrices/bound-29-eliminated.json",
+    "method": "eliminated",
+    "seed": 20261049,
+    "size": 29,
+    "split": "validation-reused",
+    "synthesis_ms": [
+      0.020665999999999997,
+      0.012041,
+      0.011958,
+      0.02075,
+      0.012374999999999999,
+      0.011792,
+      0.011834
+    ],
+    "wrong_public_rejected": true
+  },
+  {
+    "cost": {
+      "constraints": 15,
+      "multiplication_rows": 11,
+      "nonzeros": 47,
+      "witness_variables": 11
+    },
+    "family": "bound",
+    "instance": "bound-53",
+    "matrix": "matrices/bound-53-baseline.json",
+    "method": "baseline",
+    "seed": 20261073,
+    "size": 53,
+    "split": "held-out",
+    "synthesis_ms": [
+      0.024541,
+      0.022792,
+      0.022167,
+      0.022542,
+      0.021625000000000002,
+      0.021665999999999998,
+      0.030541
+    ],
+    "wrong_public_rejected": true
+  },
+  {
+    "cost": {
+      "constraints": 7,
+      "multiplication_rows": 6,
+      "nonzeros": 26,
+      "witness_variables": 6
+    },
+    "family": "bound",
+    "instance": "bound-53",
+    "matrix": "matrices/bound-53-optimized.json",
+    "method": "optimized",
+    "seed": 20261073,
+    "size": 53,
+    "split": "held-out",
+    "synthesis_ms": [
+      0.015625,
+      0.014917,
+      0.015083,
+      0.014957999999999999,
+      0.015167,
+      0.014708,
+      0.014917
+    ],
+    "wrong_public_rejected": true
+  },
+  {
+    "cost": {
+      "constraints": 6,
+      "multiplication_rows": 6,
+      "nonzeros": 28,
+      "witness_variables": 5
+    },
+    "family": "bound",
+    "instance": "bound-53",
+    "matrix": "matrices/bound-53-eliminated.json",
+    "method": "eliminated",
+    "seed": 20261073,
+    "size": 53,
+    "split": "validation-reused",
+    "synthesis_ms": [
+      0.014875000000000001,
+      0.014417,
+      0.014459,
+      0.018333,
+      0.0145,
+      0.014417,
+      0.014667
+    ],
+    "wrong_public_rejected": true
+  },
+  {
+    "cost": {
+      "constraints": 16,
+      "multiplication_rows": 12,
+      "nonzeros": 61,
+      "witness_variables": 12
+    },
+    "family": "bound",
+    "instance": "bound-93",
+    "matrix": "matrices/bound-93-baseline.json",
+    "method": "baseline",
+    "seed": 20261113,
+    "size": 93,
+    "split": "held-out",
+    "synthesis_ms": [
+      0.04475,
+      0.034708,
+      0.033541999999999995,
+      0.032875,
+      0.032542,
+      0.041,
+      0.072166
+    ],
+    "wrong_public_rejected": true
+  },
+  {
+    "cost": {
+      "constraints": 8,
+      "multiplication_rows": 7,
+      "nonzeros": 30,
+      "witness_variables": 7
+    },
+    "family": "bound",
+    "instance": "bound-93",
+    "matrix": "matrices/bound-93-optimized.json",
+    "method": "optimized",
+    "seed": 20261113,
+    "size": 93,
+    "split": "held-out",
+    "synthesis_ms": [
+      0.018042000000000002,
+      0.017417,
+      0.017833,
+      0.017207999999999998,
+      0.017374999999999998,
+      0.017249999999999998,
+      0.028833
+    ],
+    "wrong_public_rejected": true
+  },
+  {
+    "cost": {
+      "constraints": 7,
+      "multiplication_rows": 7,
+      "nonzeros": 33,
+      "witness_variables": 6
+    },
+    "family": "bound",
+    "instance": "bound-93",
+    "matrix": "matrices/bound-93-eliminated.json",
+    "method": "eliminated",
+    "seed": 20261113,
+    "size": 93,
+    "split": "fresh-confirmation",
+    "synthesis_ms": [
+      0.017708,
+      0.017292,
+      0.017708,
+      0.017374999999999998,
+      0.017207999999999998,
+      0.017207999999999998,
+      0.024333
+    ],
+    "wrong_public_rejected": true
+  },
+  {
+    "cost": {
+      "constraints": 20,
+      "multiplication_rows": 15,
+      "nonzeros": 63,
+      "witness_variables": 15
+    },
+    "family": "bound",
+    "instance": "bound-181",
+    "matrix": "matrices/bound-181-baseline.json",
+    "method": "baseline",
+    "seed": 20261201,
+    "size": 181,
+    "split": "held-out",
+    "synthesis_ms": [
+      0.032959,
+      0.032332999999999994,
+      0.030875,
+      0.030541,
+      0.029583,
+      0.030040999999999998,
+      0.029249999999999998
+    ],
+    "wrong_public_rejected": true
+  },
+  {
+    "cost": {
+      "constraints": 9,
+      "multiplication_rows": 8,
+      "nonzeros": 34,
+      "witness_variables": 8
+    },
+    "family": "bound",
+    "instance": "bound-181",
+    "matrix": "matrices/bound-181-optimized.json",
+    "method": "optimized",
+    "seed": 20261201,
+    "size": 181,
+    "split": "held-out",
+    "synthesis_ms": [
+      0.02325,
+      0.021958,
+      0.023167,
+      0.02125,
+      0.022125,
+      0.020999999999999998,
+      0.021832999999999998
+    ],
+    "wrong_public_rejected": true
+  },
+  {
+    "cost": {
+      "constraints": 8,
+      "multiplication_rows": 8,
+      "nonzeros": 38,
+      "witness_variables": 7
+    },
+    "family": "bound",
+    "instance": "bound-181",
+    "matrix": "matrices/bound-181-eliminated.json",
+    "method": "eliminated",
+    "seed": 20261201,
+    "size": 181,
+    "split": "validation-reused",
+    "synthesis_ms": [
+      0.021416,
+      0.020791,
+      0.020999999999999998,
+      0.020375,
+      0.02025,
+      0.019875,
+      0.020417
+    ],
+    "wrong_public_rejected": true
+  }
+]

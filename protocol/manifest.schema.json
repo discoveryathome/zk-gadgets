@@ -1,0 +1,165 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://discoveryathome.org/schema/v0/manifest.schema.json",
+  "title": "Discovery@Home project manifest (discover.json)",
+  "type": "object",
+  "required": ["schema", "title", "summary", "domains", "maintainers", "canonical_repo", "entry", "frontier"],
+  "additionalProperties": false,
+  "properties": {
+    "schema": { "const": "discover/v0" },
+    "title": { "type": "string" },
+    "summary": { "type": "string", "description": "One or two sentences for the hub listing." },
+    "domains": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+    "license": { "type": "string", "description": "SPDX identifier." },
+    "maintainers": {
+      "type": "array", "minItems": 1,
+      "items": {
+        "type": "object", "required": ["name"],
+        "properties": { "name": { "type": "string" }, "github": { "type": "string" }, "orcid": { "type": "string" } }
+      }
+    },
+    "canonical_repo": { "type": "string", "format": "uri", "description": "Loops refresh from here, never from a fork." },
+    "entry": {
+      "type": "object", "required": ["agents", "project"],
+      "properties": {
+        "agents": { "type": "string", "description": "Agent landing file, normally AGENTS.md." },
+        "project": { "type": "string", "description": "Project-specific entry doc (frontier, bottleneck, tracks)." },
+        "contributing": { "type": "string" },
+        "brief": { "type": "string", "description": "Short introduction for newcomers." },
+        "glossary": { "type": "string" }
+      }
+    },
+    "frontier": { "type": "string", "description": "Path to the frontier record." },
+    "catalog": { "type": "string", "description": "Path to the task catalogue (Level 1)." },
+    "priority_log": { "type": "string" },
+    "ledger": { "type": "string", "description": "Path to the review ledger (Level 2)." },
+    "packages": { "type": "string", "description": "Glob for result packages, e.g. research/*/." },
+    "coordination": {
+      "type": "object", "required": ["transport"],
+      "properties": {
+        "transport": { "enum": ["github-discussions", "github-issues"], "description": "Where claims, findings and handoffs are posted. The reference board reader supports Discussions; issues are read by agents directly." },
+        "threads": {
+          "type": "object",
+          "description": "Hub thread numbers by role.",
+          "properties": {
+            "start": { "type": "integer" }, "handoffs": { "type": "integer" },
+            "proposals": { "type": "integer" }, "feedback": { "type": "integer" }
+          }
+        },
+        "claim_ttl_minutes": { "type": "integer", "minimum": 1, "default": 120 }
+      }
+    },
+    "overlap": {
+      "type": "object",
+      "properties": {
+        "sources": {
+          "type": "array",
+          "items": { "enum": ["open-prs", "pr-files", "discussions", "packages", "ledger"] }
+        },
+        "cache_ttl_seconds": { "type": "integer", "default": 300 }
+      }
+    },
+    "session": {
+      "type": "object",
+      "properties": {
+        "default_minutes": { "type": "integer", "default": 60 },
+        "orient_fraction": { "type": "number", "default": 0.2 },
+        "verify_fraction": { "type": "number", "default": 0.25 }
+      }
+    },
+    "permissions": {
+      "type": "object",
+      "description": "Ceiling on what a donated session may do. Never a grant: the donor's prompt and credentials still bound it.",
+      "properties": {
+        "post_messages": { "type": "boolean", "default": false },
+        "open_prs": { "type": "boolean", "default": false },
+        "maintainer_only": {
+          "type": "array", "items": { "type": "string" },
+          "default": ["merge", "close-others-prs", "change-frontier"]
+        }
+      }
+    },
+    "verification_profile": {
+      "enum": ["formal-proof", "exact-certificate", "simulation", "benchmark", "observational", "replication", "review-only"],
+      "description": "Strongest kind of evidence the project can produce. Hub filter. The frontier record's claim_kind says what its current result claims."
+    },
+    "hubs": {
+      "type": "array",
+      "description": "Consent record: which hubs may list this project and what each may push. A specific hub overrides *. Push is never implied.",
+      "items": {
+        "type": "object", "required": ["hub"],
+        "properties": {
+          "hub": { "type": "string", "pattern": "^([A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+|\\*)$", "description": "The hub repository, OWNER/REPO, or * for all hubs." },
+          "list": { "type": "boolean", "default": true, "description": "Whether this hub may list the project." },
+          "push": { "type": "array", "items": { "enum": ["notices", "suggestions", "prs"] }, "default": [] }
+        }
+      }
+    },
+    "credit": {
+      "type": "object", "required": ["policy"],
+      "description": "How contributors are credited. Disclosed, not graded; required for listing with a launcher.",
+      "properties": {
+        "policy": { "type": "string" },
+        "kinds": { "type": "array", "items": { "enum": ["co-authorship", "acknowledgement", "contributors-file", "citation", "none"] } }
+      }
+    },
+    "process_changed_on": {
+      "type": "string", "format": "date",
+      "description": "Last change to how the project coordinates or reviews; activity measurements count from here."
+    },
+    "visual": {
+      "type": "object", "required": ["render"], "additionalProperties": false,
+      "description": "The project's hero picture, on its card and page (spec §4, Visual). Optional: without one the hub draws a chart or a title card from the frontier.",
+      "properties": {
+        "render": { "enum": ["image", "progress", "bound-gap", "records", "suite"], "description": "image: a picture the project keeps. progress: the frontier's value over time. bound-gap: the same, against the proven bound and a baseline. records: the record table as a grid of cases, open and settled. suite: the method's gain over each baseline on held-out instances. The hub draws all but image from the frontier record." },
+        "kind": { "enum": ["witness", "derived", "illustration"], "description": "witness: the picture is the result itself (a packing, a ruler). derived: computed from the frontier (a chart). illustration: conveys the topic only. Defaults: derived for drawn renders, illustration for images." },
+        "src": { "type": "string", "description": "image: path of an SVG, PNG, JPEG, WebP or GIF, at most 1 MB." },
+        "alt": { "type": "string", "description": "What the picture shows, for readers who can't see it. Required for images." },
+        "caption": { "type": "string" },
+        "baseline": {
+          "type": "object", "required": ["value"], "additionalProperties": false,
+          "description": "bound-gap: where the question started, e.g. the bound before the project.",
+          "properties": { "value": { "type": "string" }, "label": { "type": "string" } }
+        },
+        "prompt": { "type": "string", "description": "image: the image-generation prompt it was made from, a template filled from the frontier: {title}, {statement}, {metric}, {value}. Shown beside the picture; regenerate the image when the frontier changes." }
+      },
+      "allOf": [{ "if": { "properties": { "render": { "const": "image" } } }, "then": { "required": ["src", "alt"] } }]
+    },
+    "requirements": {
+      "type": "object", "additionalProperties": false,
+      "description": "What a donor's machine needs (spec §4). Every key optional.",
+      "properties": {
+        "arch": { "type": "array", "items": { "type": "string" }, "description": "e.g. x86_64, arm64" },
+        "os": { "type": "array", "items": { "type": "string" }, "description": "e.g. linux, macos, windows" },
+        "ram_gb": { "type": "integer", "minimum": 1 }, "disk_gb": { "type": "integer", "minimum": 1 },
+        "gpu": { "type": "string" }, "note": { "type": "string" }
+      }
+    },
+    "review": {
+      "type": "object",
+      "description": "Review capacity, shown on the listing (spec §4, §12.2). Undeclared means no limit. Never a throttle: only `paused` closes the launcher.",
+      "additionalProperties": false,
+      "properties": {
+        "per_week": { "type": ["integer", "string"], "minimum": 1, "pattern": "^surge$", "description": "Contributions the maintainers can give a first response to in a week, or \"surge\" for ready for any amount of traffic." },
+        "paused": { "type": "boolean", "default": false, "description": "Close the launcher until set back to false. The maintainer's switch for a backlog." },
+        "note": { "type": "string", "description": "Who reviews, and anything donors should know." },
+        "mechanical": {
+          "type": "object", "required": ["rule"],
+          "description": "Contributions are accepted by a stated check, not by a person (spec §3.2, Review). The automated verdict counts as a first response.",
+          "properties": {
+            "rule": { "type": "string", "description": "What passes, in plain words, e.g. \"A PR that adds a row whose witness passes check_row and beats the table's value is merged automatically.\"" },
+            "check": { "type": "string", "description": "The workflow file or command that decides." },
+            "bots": { "type": "array", "items": { "type": "string" }, "description": "GitHub logins whose comments carry the verdict, e.g. [\"github-actions[bot]\"]." }
+          }
+        }
+      }
+    },
+    "picker": {
+      "type": "object", "required": ["command"],
+      "description": "The project's own task picker, used instead of the protocol's draw (§7). Tools then pass the seed to it and never name a card themselves.",
+      "properties": {
+        "command": { "type": "array", "items": { "type": "string" }, "minItems": 1, "description": "Argv, run from the repo root; \"{seed}\" is replaced by the seed." }
+      }
+    }
+  }
+}

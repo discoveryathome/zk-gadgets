@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="700" viewBox="0 0 1120 700">
+<rect width="1120" height="700" fill="#0c1725"/>
+<style>text{font-family:Arial,sans-serif;fill:#eef4fa}.small{font-size:15px}.title{font-size:28px;font-weight:bold}.label{font-size:18px}</style>
+<text x="36" y="50" class="title">Fewer checks. The same mathematical promise.</text>
+<text x="36" y="80" class="small">Measured R1CS rows • BN254 • fixed statements • local contributor trial</text>
+<text x="36" y="150" class="label">range-64</text>
+<rect x="230" y="130" width="530" height="22" rx="3" fill="#708197"/>
+<rect x="230" y="159" width="521.85" height="22" rx="3" fill="#37d4ad"/>
+<text x="780" y="148" class="label">65 → 64</text>
+<text x="940" y="148" class="label">1.54%</text>
+<text x="36" y="246" class="label">reuse-64</text>
+<rect x="230" y="226" width="530" height="22" rx="3" fill="#708197"/>
+<rect x="230" y="255" width="267.02" height="22" rx="3" fill="#37d4ad"/>
+<text x="780" y="244" class="label">131 → 66</text>
+<text x="940" y="244" class="label">49.62%</text>
+<text x="36" y="342" class="label">arithmetic-64</text>
+<rect x="230" y="322" width="530" height="22" rx="3" fill="#708197"/>
+<rect x="230" y="351" width="176.67" height="22" rx="3" fill="#37d4ad"/>
+<text x="780" y="340" class="label">192 → 64</text>
+<text x="940" y="340" class="label">66.67%</text>
+<text x="36" y="438" class="label">bound-13</text>
+<rect x="230" y="418" width="530" height="22" rx="3" fill="#708197"/>
+<rect x="230" y="447" width="212.00" height="22" rx="3" fill="#37d4ad"/>
+<text x="780" y="436" class="label">10 → 4</text>
+<text x="940" y="436" class="label">60.00%</text>
+<text x="36" y="534" class="label">merkle-8</text>
+<rect x="230" y="514" width="530" height="22" rx="3" fill="#708197"/>
+<rect x="230" y="543" width="528.06" height="22" rx="3" fill="#37d4ad"/>
+<text x="780" y="532" class="label">2182 → 2174</text>
+<text x="940" y="532" class="label">0.37%</text>
+<text x="36" y="640" class="small">Gray: reference. Green: candidate. Each pair has its own scale, starting at zero.</text>
+<text x="36" y="665" class="small">Merkle savings are modest. Range-only elimination saves one row. Counts do not guarantee prover speedups.</text>
+</svg>

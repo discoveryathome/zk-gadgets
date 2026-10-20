@@ -1,0 +1,112 @@
+{
+  "schema": "discover-frontier/v0",
+  "statement": "Pinned BN254 R1CS suite: 26 scoped instances, 73 implementation cases. Arithmetic factoring/fusion reduces 192 to 64 rows for 64 expressions; published range encoding plus witness elimination reduces x<13 from 10 to 4; range-only 64-bit predicate reduces 65 to 64 rows with unchanged multiplication count; field-valued depth-8 Merkle ordering reduces 2182 to 2174. Known-technique implementations, not global optima or novelty claims.",
+  "status": "Local pilot; author-checked candidate records; not accepted by an independent reviewer or maintainer",
+  "evidence_level": [
+    "author-checked"
+  ],
+  "claim_kind": [
+    "exact",
+    "argument",
+    "measured"
+  ],
+  "scope": "BN254 scalar Fr; finalized total R1CS rows; arkworks 0.5 series locked. Full interfaces/hash/proving assumptions in FORMULATION.md. Custom symbolic checker covers optimized candidates; ten upstream comparator/full-field baseline cases have only numerical checks. Timing exploratory on busy shared hardware.",
+  "formulation": {
+    "id": "bn254-r1cs-v1",
+    "doc": "FORMULATION.md",
+    "since": "2026-10-20"
+  },
+  "table": {
+    "path": "results/summary.json",
+    "format": "json",
+    "key": [
+      "instance"
+    ],
+    "value": "value",
+    "direction": "lower-is-better",
+    "object": "source",
+    "check_row": [
+      "python3",
+      "scripts/verify.py",
+      "--row",
+      "{instance}"
+    ],
+    "check_row_minutes": 2,
+    "by": "by",
+    "source": "source",
+    "updated": "updated"
+  },
+  "assumptions": [
+    {
+      "id": "checker-review",
+      "statement": "Custom exact-algebra Python checker has mutation tests but no independent review or proof-assistant formalization.",
+      "status": "open",
+      "link": "scripts/verify.py"
+    },
+    {
+      "id": "hash-security",
+      "statement": "Circuit relation uses fixed benchmark Poseidon parameters. Cryptographic hash security and Groth16 setup assumptions are not proven here.",
+      "status": "open",
+      "link": "FORMULATION.md"
+    },
+    {
+      "id": "baseline-canonicality",
+      "statement": "Full-field decomposition and constant comparator rely on upstream correctness; their complete relation proof is not implemented in our restricted checker.",
+      "status": "partial",
+      "link": "SOURCES.md"
+    },
+    {
+      "id": "sustained-yield",
+      "statement": "One local contributor trial cannot establish continuing discovery yield, independent novelty, or review throughput.",
+      "status": "open",
+      "link": "research/trial/REPORT.md"
+    }
+  ],
+  "sources": [
+    "https://github.com/arkworks-rs/r1cs-std/tree/v0.5.0",
+    "https://github.com/arkworks-rs/crypto-primitives/blob/v0.5.0/crypto-primitives/src/merkle_tree/constraints.rs",
+    "https://hackmd.io/@7dpNYqjKQGeYC7wMlPxHtQ/B1w_9nq2Y",
+    "SOURCES.md"
+  ],
+  "reproduce": "python3 scripts/verify.py --output results/verification-recheck.json",
+  "reproduce_full": "bash scripts/reproduce.sh replay",
+  "reproduce_minutes": 6,
+  "prerequisites": [
+    "Python 3.9+ (standard library only for saved-artifact checks)",
+    "Rust/Cargo and network on first full rebuild; pinned dependencies in Cargo.lock"
+  ],
+  "review": "discover/ledger.md",
+  "updated_on": "2026-10-20",
+  "artifacts": [
+    {
+      "path": "Cargo.lock",
+      "sha256": "77246b22b746718713916953397a9e47d9f0a3b00495297967d39f45e202e229",
+      "role": "pinned evidence"
+    },
+    {
+      "path": "spec/poseidon.json",
+      "sha256": "b572db070f37b14a76582f86433c1a5df3637001a8aa576327c08e93e77f491e",
+      "role": "pinned evidence"
+    },
+    {
+      "path": "spec/baseline-matrices.sha256.json",
+      "sha256": "b0188c4f94c9afa6f08af77c08141057bba209b7542cab69dd5651f67649ef75",
+      "role": "pinned evidence"
+    },
+    {
+      "path": "results/benchmarks.json",
+      "sha256": "cc00c4f006e0417eaea13485e244c6f4355743413ef52753b5076802476ca24b",
+      "role": "pinned evidence"
+    },
+    {
+      "path": "results/summary.json",
+      "sha256": "8fb22570ed3782b10a64b6b8074b35658c4c41fa885e2def57c48a0c31a5620e",
+      "role": "pinned evidence"
+    },
+    {
+      "path": "results/proofs.json",
+      "sha256": "ff8dd549824f17b3ae419366244097b462a57d812546a85dfab40ed9116fc37b",
+      "role": "pinned evidence"
+    }
+  ]
+}

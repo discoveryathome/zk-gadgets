@@ -1,0 +1,47 @@
+[
+  {
+    "card": "verifier-mutations",
+    "command": [
+      "python3",
+      "scripts/test_verifier.py"
+    ],
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": "........\n----------------------------------------------------------------------\nRan 8 tests in 0.003s\n\nOK\n"
+  },
+  {
+    "card": "shared-subexpressions",
+    "command": [
+      "python3",
+      "scripts/verify.py",
+      "--row",
+      "arithmetic-7"
+    ],
+    "exit_code": 0,
+    "stdout": "arithmetic-7 baseline relation checked\narithmetic-7 optimized relation checked\narithmetic-7 fused relation checked\nPASS: 3 matrices; exhaustive 4096 bit assignments; malicious witness negative control; 0.167s\n",
+    "stderr": ""
+  },
+  {
+    "card": "arbitrary-bounds",
+    "command": [
+      "python3",
+      "scripts/verify.py",
+      "--row",
+      "bound-53"
+    ],
+    "exit_code": 0,
+    "stdout": "bound-53 baseline assignment + native relation only\nbound-53 optimized relation checked\nPASS: 2 matrices; exhaustive 4096 bit assignments; malicious witness negative control; 0.112s\n",
+    "stderr": ""
+  },
+  {
+    "card": "modern-baselines",
+    "command": [
+      "python3",
+      "-c",
+      "from pathlib import Path; s=Path('protocol/ark-merkle-v0.6.rs').read_text(); assert 'let right_hash = bit.select(&curr_hash, sibling)?;' in s; print('Pinned 0.6 source still uses two selections; executable benchmark is 0.5.')"
+    ],
+    "exit_code": 0,
+    "stdout": "Pinned 0.6 source still uses two selections; executable benchmark is 0.5.\n",
+    "stderr": ""
+  }
+]

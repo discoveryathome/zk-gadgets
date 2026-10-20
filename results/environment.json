@@ -1,0 +1,12 @@
+{
+  "trial_started_utc": "2026-10-20T21:10:33Z",
+  "hardware": "Apple M2, 8 logical CPUs, 24 GiB RAM",
+  "os": "macOS, arm64",
+  "rustc": "1.98.1 (48a229cea 2026-09-01)",
+  "cargo": "1.98.1 (797e8a9bc 2026-08-05)",
+  "python": "3.14.6",
+  "rayon_num_threads": 1,
+  "build_profile": "release opt-level=3",
+  "timing_limitations": "Substantial unrelated CPU activity observed during the trial. Timings are exploratory; A/A control included. Exact row counts are the primary endpoint.",
+  "security": "Agent sandbox disabled; user authorized local contributor run. Registry sources screened before build; no high-severity findings. Warnings were CI-only sudo commands; build scripts were reported as info. No global installs, posting, or uploads."
+}

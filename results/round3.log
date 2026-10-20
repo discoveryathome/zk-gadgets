@@ -1,0 +1,73 @@
+   Compiling zk-gadget-pilot v0.1.0 (/Users/colkitt/discover-work/incubatedPilots/zk-gadgets/start-zk-gadgets)
+    Finished `release` profile [optimized] target(s) in 1m 26s
+     Running `start-zk-gadgets/target/release/zk-gadget-pilot start-zk-gadgets/results-round3`
+Constraint trace requires enabling `ConstraintLayer`
+range-8-full: 886 rows
+Constraint trace requires enabling `ConstraintLayer`
+range-8-bounded: 9 rows
+Constraint trace requires enabling `ConstraintLayer`
+range-8-optimized: 9 rows
+Constraint trace requires enabling `ConstraintLayer`
+range-8-eliminated: 8 rows
+Constraint trace requires enabling `ConstraintLayer`
+range-16-full: 878 rows
+Constraint trace requires enabling `ConstraintLayer`
+range-16-bounded: 17 rows
+Constraint trace requires enabling `ConstraintLayer`
+range-16-optimized: 17 rows
+Constraint trace requires enabling `ConstraintLayer`
+range-16-eliminated: 16 rows
+Constraint trace requires enabling `ConstraintLayer`
+range-32-full: 862 rows
+Constraint trace requires enabling `ConstraintLayer`
+range-32-bounded: 33 rows
+Constraint trace requires enabling `ConstraintLayer`
+range-32-optimized: 33 rows
+Constraint trace requires enabling `ConstraintLayer`
+range-32-eliminated: 32 rows
+Constraint trace requires enabling `ConstraintLayer`
+range-64-full: 830 rows
+Constraint trace requires enabling `ConstraintLayer`
+range-64-bounded: 65 rows
+Constraint trace requires enabling `ConstraintLayer`
+range-64-optimized: 65 rows
+Constraint trace requires enabling `ConstraintLayer`
+range-64-eliminated: 64 rows
+Constraint trace requires enabling `ConstraintLayer`
+range-5-full: 889 rows
+Constraint trace requires enabling `ConstraintLayer`
+range-5-bounded: 6 rows
+Constraint trace requires enabling `ConstraintLayer`
+range-5-optimized: 6 rows
+Constraint trace requires enabling `ConstraintLayer`
+range-5-eliminated: 5 rows
+Constraint trace requires enabling `ConstraintLayer`
+bound-13-baseline: 10 rows
+Constraint trace requires enabling `ConstraintLayer`
+bound-13-optimized: 5 rows
+Constraint trace requires enabling `ConstraintLayer`
+bound-13-eliminated: 4 rows
+Constraint trace requires enabling `ConstraintLayer`
+bound-29-baseline: 12 rows
+Constraint trace requires enabling `ConstraintLayer`
+bound-29-optimized: 6 rows
+Constraint trace requires enabling `ConstraintLayer`
+bound-29-eliminated: 5 rows
+Constraint trace requires enabling `ConstraintLayer`
+bound-53-baseline: 15 rows
+Constraint trace requires enabling `ConstraintLayer`
+bound-53-optimized: 7 rows
+Constraint trace requires enabling `ConstraintLayer`
+bound-53-eliminated: 6 rows
+Constraint trace requires enabling `ConstraintLayer`
+bound-93-baseline: 16 rows
+Constraint trace requires enabling `ConstraintLayer`
+bound-93-optimized: 8 rows
+Constraint trace requires enabling `ConstraintLayer`
+bound-93-eliminated: 7 rows
+Constraint trace requires enabling `ConstraintLayer`
+bound-181-baseline: 20 rows
+Constraint trace requires enabling `ConstraintLayer`
+bound-181-optimized: 9 rows
+Constraint trace requires enabling `ConstraintLayer`
+bound-181-eliminated: 8 rows

@@ -1,0 +1,86 @@
+   Compiling zk-gadget-pilot v0.1.0 (/Users/colkitt/discover-work/incubatedPilots/zk-gadgets/start-zk-gadgets)
+    Finished `release` profile [optimized] target(s) in 1m 14s
+     Running `start-zk-gadgets/target/release/zk-gadget-pilot start-zk-gadgets/results`
+Constraint trace requires enabling `ConstraintLayer`
+range-8-full: 886 rows
+Constraint trace requires enabling `ConstraintLayer`
+range-8-bounded: 9 rows
+Constraint trace requires enabling `ConstraintLayer`
+range-8-optimized: 9 rows
+Constraint trace requires enabling `ConstraintLayer`
+reuse-8-baseline: 19 rows
+Constraint trace requires enabling `ConstraintLayer`
+reuse-8-optimized: 10 rows
+Constraint trace requires enabling `ConstraintLayer`
+range-16-full: 878 rows
+Constraint trace requires enabling `ConstraintLayer`
+range-16-bounded: 17 rows
+Constraint trace requires enabling `ConstraintLayer`
+range-16-optimized: 17 rows
+Constraint trace requires enabling `ConstraintLayer`
+reuse-16-baseline: 35 rows
+Constraint trace requires enabling `ConstraintLayer`
+reuse-16-optimized: 18 rows
+Constraint trace requires enabling `ConstraintLayer`
+range-32-full: 862 rows
+Constraint trace requires enabling `ConstraintLayer`
+range-32-bounded: 33 rows
+Constraint trace requires enabling `ConstraintLayer`
+range-32-optimized: 33 rows
+Constraint trace requires enabling `ConstraintLayer`
+reuse-32-baseline: 67 rows
+Constraint trace requires enabling `ConstraintLayer`
+reuse-32-optimized: 34 rows
+Constraint trace requires enabling `ConstraintLayer`
+range-64-full: 830 rows
+Constraint trace requires enabling `ConstraintLayer`
+range-64-bounded: 65 rows
+Constraint trace requires enabling `ConstraintLayer`
+range-64-optimized: 65 rows
+Constraint trace requires enabling `ConstraintLayer`
+reuse-64-baseline: 131 rows
+Constraint trace requires enabling `ConstraintLayer`
+reuse-64-optimized: 66 rows
+Constraint trace requires enabling `ConstraintLayer`
+arithmetic-1-baseline: 3 rows
+Constraint trace requires enabling `ConstraintLayer`
+arithmetic-1-optimized: 2 rows
+Constraint trace requires enabling `ConstraintLayer`
+arithmetic-4-baseline: 12 rows
+Constraint trace requires enabling `ConstraintLayer`
+arithmetic-4-optimized: 8 rows
+Constraint trace requires enabling `ConstraintLayer`
+arithmetic-16-baseline: 48 rows
+Constraint trace requires enabling `ConstraintLayer`
+arithmetic-16-optimized: 32 rows
+Constraint trace requires enabling `ConstraintLayer`
+arithmetic-64-baseline: 192 rows
+Constraint trace requires enabling `ConstraintLayer`
+arithmetic-64-optimized: 128 rows
+Constraint trace requires enabling `ConstraintLayer`
+swap-1-baseline: 5 rows
+Constraint trace requires enabling `ConstraintLayer`
+swap-1-optimized: 4 rows
+Constraint trace requires enabling `ConstraintLayer`
+merkle-2-baseline: 724 rows
+Constraint trace requires enabling `ConstraintLayer`
+merkle-2-optimized: 722 rows
+Constraint trace requires enabling `ConstraintLayer`
+merkle-4-baseline: 1210 rows
+Constraint trace requires enabling `ConstraintLayer`
+merkle-4-optimized: 1206 rows
+Constraint trace requires enabling `ConstraintLayer`
+merkle-8-baseline: 2182 rows
+Constraint trace requires enabling `ConstraintLayer`
+merkle-8-optimized: 2174 rows
+Constraint trace requires enabling `ConstraintLayer`
+merkle-16-baseline: 4126 rows
+Constraint trace requires enabling `ConstraintLayer`
+merkle-16-optimized: 4110 rows
+Constraint trace requires enabling `ConstraintLayer`
+composition-8-baseline: 2202 rows
+Constraint trace requires enabling `ConstraintLayer`
+composition-8-optimized: 2193 rows
+Groth16 arithmetic-64 verified
+Groth16 merkle-8 verified
+Groth16 composition-8 verified

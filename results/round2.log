@@ -1,0 +1,55 @@
+   Compiling zk-gadget-pilot v0.1.0 (/Users/colkitt/discover-work/incubatedPilots/zk-gadgets/start-zk-gadgets)
+    Finished `release` profile [optimized] target(s) in 1m 10s
+     Running `start-zk-gadgets/target/release/zk-gadget-pilot start-zk-gadgets/results-round2`
+Constraint trace requires enabling `ConstraintLayer`
+arithmetic-1-baseline: 3 rows
+Constraint trace requires enabling `ConstraintLayer`
+arithmetic-1-optimized: 2 rows
+Constraint trace requires enabling `ConstraintLayer`
+arithmetic-1-fused: 1 rows
+Constraint trace requires enabling `ConstraintLayer`
+arithmetic-4-baseline: 12 rows
+Constraint trace requires enabling `ConstraintLayer`
+arithmetic-4-optimized: 8 rows
+Constraint trace requires enabling `ConstraintLayer`
+arithmetic-4-fused: 4 rows
+Constraint trace requires enabling `ConstraintLayer`
+arithmetic-7-baseline: 21 rows
+Constraint trace requires enabling `ConstraintLayer`
+arithmetic-7-optimized: 14 rows
+Constraint trace requires enabling `ConstraintLayer`
+arithmetic-7-fused: 7 rows
+Constraint trace requires enabling `ConstraintLayer`
+arithmetic-16-baseline: 48 rows
+Constraint trace requires enabling `ConstraintLayer`
+arithmetic-16-optimized: 32 rows
+Constraint trace requires enabling `ConstraintLayer`
+arithmetic-16-fused: 16 rows
+Constraint trace requires enabling `ConstraintLayer`
+arithmetic-31-baseline: 93 rows
+Constraint trace requires enabling `ConstraintLayer`
+arithmetic-31-optimized: 62 rows
+Constraint trace requires enabling `ConstraintLayer`
+arithmetic-31-fused: 31 rows
+Constraint trace requires enabling `ConstraintLayer`
+arithmetic-64-baseline: 192 rows
+Constraint trace requires enabling `ConstraintLayer`
+arithmetic-64-optimized: 128 rows
+Constraint trace requires enabling `ConstraintLayer`
+arithmetic-64-fused: 64 rows
+Constraint trace requires enabling `ConstraintLayer`
+bound-13-baseline: 10 rows
+Constraint trace requires enabling `ConstraintLayer`
+bound-13-optimized: 5 rows
+Constraint trace requires enabling `ConstraintLayer`
+bound-29-baseline: 12 rows
+Constraint trace requires enabling `ConstraintLayer`
+bound-29-optimized: 6 rows
+Constraint trace requires enabling `ConstraintLayer`
+bound-53-baseline: 15 rows
+Constraint trace requires enabling `ConstraintLayer`
+bound-53-optimized: 7 rows
+Constraint trace requires enabling `ConstraintLayer`
+bound-181-baseline: 20 rows
+Constraint trace requires enabling `ConstraintLayer`
+bound-181-optimized: 9 rows

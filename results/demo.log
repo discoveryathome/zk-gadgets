@@ -1,0 +1,20 @@
+Make privacy proofs cheaper without opening loopholes.
+
+A small example: a private switch must choose (7,11) or (11,7).
+With no rule that the switch is 0 or 1, switch=2 can produce (15,3).
+Honest examples alone would not expose that bug.
+
+LIVE CHECK: a forged witness satisfies the broken exported circuit.
+LIVE CHECK: the relation verifier rejects that broken circuit.
+
+Valid swap baseline: 5 total checks; full-field algebra check passes.
+Valid swap optimized: 4 total checks; full-field algebra check passes.
+
+Measured larger examples (saved results; use verify.py to recheck):
+  range-64: 65 -> 64 checks (1.54% fewer)
+  bound-13: 10 -> 4 checks (60.00% fewer)
+  arithmetic-64: 192 -> 64 checks (66.67% fewer)
+  merkle-8: 2182 -> 2174 checks (0.37% fewer)
+
+Known techniques, not claimed new mathematics. Merkle savings are small.
+Fewer constraints do not automatically mean proportionally faster proving.

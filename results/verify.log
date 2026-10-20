@@ -1,0 +1,59 @@
+range-8 full assignment + native relation only
+range-8 bounded relation checked
+range-8 optimized relation checked
+reuse-8 baseline relation checked
+reuse-8 optimized relation checked
+range-16 full assignment + native relation only
+range-16 bounded relation checked
+range-16 optimized relation checked
+reuse-16 baseline relation checked
+reuse-16 optimized relation checked
+range-32 full assignment + native relation only
+range-32 bounded relation checked
+range-32 optimized relation checked
+reuse-32 baseline relation checked
+reuse-32 optimized relation checked
+range-64 full assignment + native relation only
+range-64 bounded relation checked
+range-64 optimized relation checked
+reuse-64 baseline relation checked
+reuse-64 optimized relation checked
+arithmetic-1 baseline relation checked
+arithmetic-1 optimized relation checked
+arithmetic-4 baseline relation checked
+arithmetic-4 optimized relation checked
+arithmetic-16 baseline relation checked
+arithmetic-16 optimized relation checked
+arithmetic-64 baseline relation checked
+arithmetic-64 optimized relation checked
+swap-1 baseline relation checked
+swap-1 optimized relation checked
+merkle-2 baseline relation checked
+merkle-2 optimized relation checked
+merkle-4 baseline relation checked
+merkle-4 optimized relation checked
+merkle-8 baseline relation checked
+merkle-8 optimized relation checked
+merkle-16 baseline relation checked
+merkle-16 optimized relation checked
+composition-8 baseline relation checked
+composition-8 optimized relation checked
+arithmetic-1 fused relation checked
+arithmetic-4 fused relation checked
+arithmetic-7 baseline relation checked
+arithmetic-7 optimized relation checked
+arithmetic-7 fused relation checked
+arithmetic-16 fused relation checked
+arithmetic-31 baseline relation checked
+arithmetic-31 optimized relation checked
+arithmetic-31 fused relation checked
+arithmetic-64 fused relation checked
+bound-13 baseline assignment + native relation only
+bound-13 optimized relation checked
+bound-29 baseline assignment + native relation only
+bound-29 optimized relation checked
+bound-53 baseline assignment + native relation only
+bound-53 optimized relation checked
+bound-181 baseline assignment + native relation only
+bound-181 optimized relation checked
+PASS: 58 matrices; exhaustive 4096 bit assignments; malicious witness negative control; 290.421s

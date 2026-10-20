@@ -4,3 +4,7 @@
 /__pycache__/
 /scripts/__pycache__/
 /replay/
+/fresh-check/
+/results/verification-recheck.json
+/results/verification-fresh.json
+/results/replay-build.log

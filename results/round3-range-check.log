@@ -1,0 +1,5 @@
+range-5 full assignment + native relation only
+range-5 bounded relation checked
+range-5 optimized relation checked
+range-5 eliminated relation checked
+PASS: 4 matrices; exhaustive 4096 bit assignments; malicious witness negative control; 0.482s

@@ -141,8 +141,7 @@ def relation_check(d,params):
     found_ranges=set(); derived=0
     for row,(a,b,c) in enumerate(zip(d['a'],d['b'],d['c'])):
         poly=raw_poly(a,b,c); bw=boolean_wire(poly)
-        if bw is not None:
-            assert bw in required_bool, f'unexpected boolean at row {row}'
+        if bw is not None and bw in required_bool:
             seen_bool.add(bw); continue
         unknown={i for key in poly for i in key if i not in env}
         if unknown:
@@ -260,7 +259,11 @@ def main():
     ap=argparse.ArgumentParser(); ap.add_argument('--results',default='results'); ap.add_argument('--row'); ap.add_argument('--output'); args=ap.parse_args()
     base=Path(args.results); params=json.loads((base/'poseidon.json').read_text());
     spec=Path(__file__).resolve().parents[1]/'spec/poseidon.json'
-    if spec.exists():assert params==json.loads(spec.read_text()), 'hash parameters differ from fixed formulation'
+    assert spec.exists(), 'missing fixed hash specification'
+    assert params==json.loads(spec.read_text()), 'hash parameters differ from fixed formulation'
+    protected=json.loads((spec.parent/'baseline-matrices.sha256.json').read_text())
+    for file,digest in protected.items():
+        assert hashlib.sha256((base/file).read_bytes()).hexdigest()==digest, f'protected baseline changed: {file}'
     assert int(params['field'])==P and params['alpha']==5 and params['full_rounds']==8 and params['partial_rounds']==57
     assert len(params['ark'])==65 and all(len(r)==3 for r in params['ark']) and len(params['mds'])==3
     rows=json.loads((base/'benchmarks.json').read_text()); reports=[]; start=time.perf_counter();start_cpu=time.process_time()
@@ -282,6 +285,14 @@ def main():
             matches=[r for r in rows if r['instance']==record['instance']]
             actual=min(len(json.loads((base/r['matrix']).read_text())['a']) for r in matches)
             assert record['value']==actual, 'frontier table count mismatch'
+            winner=next(r for r in matches if r['method']==record['method'])
+            assert record['source']==winner['matrix']
+            assert len(json.loads((base/winner['matrix']).read_text())['a'])==record['value']
+            certificate=next(r for r in reports if r['instance']==record['instance'] and r['method']==record['method'])
+            assert certificate['relation_certificate'] is not None, 'winner requires a relation check'
+            reference=next(r for r in matches if r['method']==record['baseline'])
+            assert reference['matrix'] in protected, 'baseline must be pinned'
+            assert len(json.loads((base/reference['matrix']).read_text())['a'])==record['baseline_count'], 'baseline count mismatch'
     result={'cases':reports,'exhaustive':exhaustive_range(),'exhaustive_exported_bounds':exhaustive_exported(base),'negative_control':mutant_checks(params,base),'elapsed_seconds':time.perf_counter()-start,'cpu_seconds':time.process_time()-start_cpu}
     if args.output:Path(args.output).write_text(json.dumps(result,indent=2)+'\n')
     print(f"PASS: {len(reports)} matrices; exhaustive 4096 bit assignments; malicious witness negative control; {result['elapsed_seconds']:.3f}s")

@@ -1,0 +1,93 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://discoveryathome.org/schema/v0/catalog.schema.json",
+  "title": "Task catalogue: weighted tracks of research task cards",
+  "type": "object",
+  "required": ["schema", "priority_revision", "assessed_on", "tracks"],
+  "properties": {
+    "schema": { "const": "discover-catalog/v0" },
+    "priority_revision": { "type": "integer", "minimum": 1 },
+    "assessed_on": { "type": "string", "format": "date" },
+    "priority_log": { "type": "string" },
+    "status": { "type": "string" },
+    "tracks": {
+      "type": "array", "minItems": 1,
+      "description": "Weights are positive integers summing to 100 (checked by `discover validate`, not expressible here).",
+      "items": {
+        "type": "object", "required": ["id", "weight", "tasks"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+          "weight": { "type": "integer", "minimum": 1 },
+          "useful_outcome": { "type": "string" },
+          "tasks": { "type": "array", "items": { "$ref": "#/$defs/card" } }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "card": {
+      "type": "object",
+      "required": ["id", "question", "starting_points", "methods", "acceptance_gate", "first_step", "bottleneck_link"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+        "question": { "type": "string" },
+        "starting_points": { "type": "array", "items": { "type": "string" } },
+        "methods": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+        "acceptance_gate": { "type": "string" },
+        "first_step": {
+          "type": "object", "required": ["command", "expected"],
+          "description": "Positive control: proves the environment works before new work starts.",
+          "properties": {
+            "command": { "type": "array", "items": { "type": "string" } },
+            "expected": { "type": "string" },
+            "inspect": { "type": "string" },
+            "scope": { "type": "string" }
+          }
+        },
+        "requires": {
+        "type": "object", "additionalProperties": false,
+        "description": "What a donor's machine needs (spec §4). Every key optional.",
+        "properties": {
+          "arch": { "type": "array", "items": { "type": "string" }, "description": "e.g. x86_64, arm64" },
+          "os": { "type": "array", "items": { "type": "string" }, "description": "e.g. linux, macos, windows" },
+          "ram_gb": { "type": "integer", "minimum": 1 }, "disk_gb": { "type": "integer", "minimum": 1 },
+          "gpu": { "type": "string" }, "note": { "type": "string" }
+        }
+        },
+        "claim_kind": {
+          "type": "array", "items": { "enum": ["exact", "formal", "certified", "argument", "model", "measured", "observational"] },
+          "description": "What kind of result this card's work produces, as in the frontier record (spec §5)."
+        },
+        "rows": {
+          "type": "object", "additionalProperties": false,
+          "description": "The card applies to any row of the frontier's table; the picker draws one from the seed (spec §7).",
+          "properties": {
+            "open": { "type": "boolean", "default": true, "description": "Draw only open rows (no bound, or a value that doesn't meet it)." },
+            "where": { "type": "object", "description": "Only rows whose columns equal these values, e.g. {\"t\": 3}. Compared as text." }
+          }
+        },
+        "first_experiment": { "type": "string" },
+        "bottleneck_link": { "type": "string" },
+        "allowed_variations": { "type": "array", "items": { "type": "string" } },
+        "scope_change_triggers": { "type": "array", "items": { "type": "string" } },
+        "overlap_terms": { "type": "array", "items": { "type": "string" } },
+        "existing_checks": {
+          "type": "array",
+          "description": "New in v0: what already covers this card for the current frontier, so agents don't repeat it.",
+          "items": {
+            "type": "object",
+            "required": ["scope", "evidence"],
+            "properties": {
+              "scope": { "type": "string", "description": "What was checked, and its limits." },
+              "evidence": { "type": "string", "description": "Repository path or URL of the evidence." },
+              "remaining": { "type": "string", "description": "What this check leaves open." },
+              "status": { "type": "string", "description": "Evidence level or review status of the check." },
+              "source_commit": { "type": "string", "description": "Commit the check was made against." },
+              "frontier_sha256": { "type": "string", "description": "SHA256 of the frontier record the check applies to; stale when it changes." }
+            }
+          }
+        }
+      }
+    }
+  }
+}

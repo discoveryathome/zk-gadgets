@@ -1,0 +1,62 @@
+{
+  "schema": "discover/v0",
+  "title": "Sound R1CS Gadget Optimization",
+  "summary": "Reduce R1CS constraints while checking the full accepted witness relation, with a home-computer contributor trial.",
+  "domains": [
+    "cryptography",
+    "formal-methods"
+  ],
+  "maintainers": [
+    {
+      "name": "UNASSIGNED \u2014 proposal only; no donor intake"
+    }
+  ],
+  "canonical_repo": "file:///Users/colkitt/discover-work/incubatedPilots/zk-gadgets/start-zk-gadgets",
+  "entry": {
+    "agents": "AGENTS.md",
+    "project": "DISCOVERY.md"
+  },
+  "frontier": "discover/frontier.json",
+  "catalog": "discover/catalog.json",
+  "priority_log": "discover/priority-log.md",
+  "ledger": "discover/ledger.md",
+  "packages": "research/*/",
+  "overlap": {
+    "sources": [
+      "packages",
+      "ledger"
+    ]
+  },
+  "session": {
+    "default_minutes": 60,
+    "orient_fraction": 0.2,
+    "verify_fraction": 0.25
+  },
+  "permissions": {
+    "post_messages": false,
+    "open_prs": false,
+    "maintainer_only": [
+      "merge",
+      "close-others-prs",
+      "change-frontier"
+    ]
+  },
+  "verification_profile": "exact-certificate",
+  "license": "MIT",
+  "credit": {
+    "policy": "Credit named contributions and independent reviews in CONTRIBUTORS.md; cite upstream sources. No automatic authorship claims.",
+    "kinds": [
+      "contributors-file",
+      "citation"
+    ]
+  },
+  "review": {
+    "paused": true,
+    "note": "No consenting maintainer or review capacity assigned. Local proposal only; closed to donor intake."
+  },
+  "requirements": {
+    "ram_gb": 4,
+    "disk_gb": 1,
+    "note": "Python 3.9+ for saved-artifact verification; Rust/Cargo for full synthesis and Groth16 replay. No GPU. Initial build needs network."
+  }
+}
