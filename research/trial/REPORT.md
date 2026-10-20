@@ -140,4 +140,5 @@ prover replication. Look for repeatable useful gains, not one large toy percenta
 A launch could responsibly feature this as a **verified optimization workshop** with
 bounded certificate families and explicit replication credit. It should not promise
 that every volunteer will discover a new cryptographic result. No maintainer is
-assigned, intake is paused, and nothing has been published.
+assigned and intake is paused. The trial ran in LOCAL mode; the repository was
+subsequently published on GitHub without a hub submission.

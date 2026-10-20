@@ -11,7 +11,7 @@
       "name": "UNASSIGNED \u2014 proposal only; no donor intake"
     }
   ],
-  "canonical_repo": "file:///Users/colkitt/discover-work/incubatedPilots/zk-gadgets/start-zk-gadgets",
+  "canonical_repo": "https://github.com/discoveryathome/zk-gadgets",
   "entry": {
     "agents": "AGENTS.md",
     "project": "DISCOVERY.md"
@@ -52,7 +52,7 @@
   },
   "review": {
     "paused": true,
-    "note": "No consenting maintainer or review capacity assigned. Local proposal only; closed to donor intake."
+    "note": "No consenting maintainer or review capacity assigned. Research proposal only; closed to donor intake."
   },
   "requirements": {
     "ram_gb": 4,

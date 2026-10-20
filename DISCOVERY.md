@@ -12,8 +12,9 @@ not establish improvements over an efficient gadget. Constraint savings are exac
 wall-clock speedups need separate controlled evidence. Avoid changing a hash to win
 a benchmark, or dropping a Boolean/range constraint because examples still work.
 
-This local proposal is CLOSED to donor intake: no maintainer has consented and no
-review capacity is assigned. Nothing is published. A maintainer must review the
+This research proposal is CLOSED to donor intake: no maintainer has consented and no
+review capacity is assigned. The repository is published on GitHub but has not been
+submitted to the Discovery@Home hub. A maintainer must review the
 checker and authorize acceptance before this can become a featured live project.
 The schema requires a maintainer entry; `UNASSIGNED` is an explicit sentinel, not a
 person or a claim of consent. `review.paused=true` enforces this status in metadata.

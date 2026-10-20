@@ -1,15 +1,23 @@
 # Make privacy proofs cheaper without opening loopholes
 
 Can the same mathematical statements be proved with fewer constraints and less
-prover computation? This **local Discovery@Home pilot** tests that question using
+prover computation? This **Discovery@Home pilot, developed in LOCAL mode,** tests that question using
 R1CS over the BN254 scalar field, pinned arkworks libraries, and a restricted
 independent relation verifier.
 
 Start with [the contributor-trial assessment](research/trial/REPORT.md),
 [measured results](results/SUMMARY.md), or [the progress graphic](results/progress.svg).
-No maintainer has consented yet; donor intake is paused. Nothing is published.
+No maintainer has consented yet; donor intake is paused. This repository has not
+been submitted to the Discovery@Home hub.
 
 ## Check it on a home computer
+
+Clone the pilot:
+
+```sh
+git clone https://github.com/discoveryathome/zk-gadgets.git
+cd zk-gadgets
+```
 
 Python 3.9+ is sufficient to check the saved examples, with no packages or network:
 
