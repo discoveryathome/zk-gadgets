@@ -1,5 +1,5 @@
 start-zk-gadgets: conformant: the required files are present and valid
-  frontier table: 24 cases, 24 open
+  frontier table: 26 cases, 26 open
   conventions followed: weighted task catalogue, priority log, frontier `reproduce` check, review ledger, result packages
   convention not followed: coordination channel: manifest has no `coordination` channel
   Conventions are recommended, not required. The stage comes from a hub assessment of

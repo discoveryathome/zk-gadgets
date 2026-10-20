@@ -70,7 +70,7 @@
   ],
   "reproduce": "python3 scripts/verify.py --output results/verification-recheck.json",
   "reproduce_full": "bash scripts/reproduce.sh replay",
-  "reproduce_minutes": 6,
+  "reproduce_minutes": 3,
   "prerequisites": [
     "Python 3.9+ (standard library only for saved-artifact checks)",
     "Rust/Cargo and network on first full rebuild; pinned dependencies in Cargo.lock"
@@ -107,6 +107,26 @@
       "path": "results/proofs.json",
       "sha256": "ff8dd549824f17b3ae419366244097b462a57d812546a85dfab40ed9116fc37b",
       "role": "pinned evidence"
+    },
+    {
+      "path": "scripts/verify.py",
+      "sha256": "69059d65dfb31f164c7b38ff573148c3a60d7d325c6b3e6aca4c54ca4ee74d68",
+      "role": "verification evidence"
+    },
+    {
+      "path": "src/main.rs",
+      "sha256": "a02dccf91f1ac3a36874eed80a2dba58cf378dbae54b3588b2ac341278282fd9",
+      "role": "verification evidence"
+    },
+    {
+      "path": "results/verification.json",
+      "sha256": "dc25a6ec006ba500069ede8609eabe63cf7d848ef499351e82d5b04fab474555",
+      "role": "verification evidence"
+    },
+    {
+      "path": "results/trial-receipt.json",
+      "sha256": "08122a84ad7ff67e57aa8ce22faf7278ca054d4d911a8c68fae193d4c6e5c659",
+      "role": "verification evidence"
     }
   ]
 }

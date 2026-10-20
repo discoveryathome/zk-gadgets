@@ -14,7 +14,7 @@ One agent, no sub-agents or solver search. The run began at
 candidate changes, benchmarking, adversarial checks, and a clean-checkout replay.
 The previous turn's source audit and downloaded guidance are preparation, not
 credited as discoveries during this run. This is one author-run trial, not evidence
-about the success rate of independent contributors. Final timing and replay receipts
+about the success rate of independent contributors. The completed run took **33.7 minutes**. Timing and replay receipts
 are recorded in `results/trial-receipt.json` and `results/fresh-replay.log`.
 
 The machine was an Apple M2 with 24 GiB RAM. Proving used one Rayon thread. The
@@ -47,6 +47,9 @@ result on the efficient range API prompted a different algebraic representation,
 which then improved the declared total-row objective. No brute-force search was
 needed. However, the last change also increases matrix density on some instances;
 a multi-metric scoreboard is necessary to prevent a misleading sense of progress.
+Concretely, 64-bit range elimination increases matrix nonzeros from 258 to 318
+(+23.3%) while saving one row; this is not an established prover-work improvement.
+The x<13 encoding is better behaved: 31 → 18 nonzeros across the whole change.
 
 These results do **not** establish new mathematics, best-known global counts, or
 an automatically mergeable upstream patch. The Merkle optimization specializes to
@@ -78,8 +81,11 @@ checked after the exact Boolean/two-root reduction, over the **same BN254 field*
 we did not substitute a tiny field. A separate 12-bit check covers all 4096 bit
 assignments. Multiple valid digit witnesses for one x are retained where allowed.
 
-The initial 58-case full check took 290 seconds on the shared machine. Final
-73-case timings and the clean-checkout result are in the receipts. This is practical
+The initial 58-case full check took 290 seconds on the shared machine. The final
+73-case fresh-checkout pass took **121.8 seconds wall time**
+and **34.4 CPU seconds**, with 63 full symbolic relation checks
+and ten numerical-only reference checks. All 73 matrices and assignments rebuilt
+byte-for-byte. The verifier unit tests passed (nine tests). This is practical
 for home contributors and review batches, although the trustworthiness and extension
 of the checker are likely to consume more expert attention than proposing rewrites.
 

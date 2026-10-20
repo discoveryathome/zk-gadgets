@@ -7,7 +7,7 @@
     ],
     "exit_code": 0,
     "stdout": "",
-    "stderr": "........\n----------------------------------------------------------------------\nRan 8 tests in 0.003s\n\nOK\n"
+    "stderr": ".........\n----------------------------------------------------------------------\nRan 9 tests in 0.016s\n\nOK\n"
   },
   {
     "card": "shared-subexpressions",
@@ -18,7 +18,7 @@
       "arithmetic-7"
     ],
     "exit_code": 0,
-    "stdout": "arithmetic-7 baseline relation checked\narithmetic-7 optimized relation checked\narithmetic-7 fused relation checked\nPASS: 3 matrices; exhaustive 4096 bit assignments; malicious witness negative control; 0.167s\n",
+    "stdout": "arithmetic-7 baseline relation checked\narithmetic-7 optimized relation checked\narithmetic-7 fused relation checked\nPASS: 3 matrices; exhaustive 4096 bit assignments; malicious witness negative control; 0.137s\n",
     "stderr": ""
   },
   {
@@ -30,7 +30,7 @@
       "bound-53"
     ],
     "exit_code": 0,
-    "stdout": "bound-53 baseline assignment + native relation only\nbound-53 optimized relation checked\nPASS: 2 matrices; exhaustive 4096 bit assignments; malicious witness negative control; 0.112s\n",
+    "stdout": "bound-53 baseline assignment + native relation only\nbound-53 optimized relation checked\nbound-53 eliminated relation checked\nPASS: 3 matrices; exhaustive 4096 bit assignments; malicious witness negative control; 0.089s\n",
     "stderr": ""
   },
   {

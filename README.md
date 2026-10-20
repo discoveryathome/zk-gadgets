@@ -20,7 +20,7 @@ python3 scripts/verify.py --output results/verification-recheck.json
 ```
 
 For a quick single case: `python3 scripts/verify.py --row arithmetic-64`.
-The full matrix/relation check takes a few minutes on the busy M2 trial machine;
+The final full matrix/relation check took 122 seconds on the busy M2 trial machine;
 small examples and the demo take seconds. Exact runtimes are in the report.
 Do not use Python `-O`; the checker rejects assertion-disabled execution.
 

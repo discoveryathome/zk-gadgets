@@ -1,0 +1,28 @@
+{
+  "started_utc": "2026-10-20T21:10:33+00:00",
+  "completed_utc": "2026-10-20T21:44:14.282253+00:00",
+  "elapsed_minutes": 33.69,
+  "preparation": "Prior-turn source audit excluded; this run includes pilot bootstrap, contributor experiments, verification and reporting.",
+  "agents": 1,
+  "solver_search": false,
+  "source_checkpoint_replayed": "5e2516a4a7faa5077ed6e99ba77be3bbead0cfaa",
+  "fresh_rebuild": "73 byte-identical R1CS matrix/assignment artifacts and cost records",
+  "cases": 73,
+  "relation_checked": 63,
+  "numerical_only_references": 10,
+  "verification_wall_seconds": 121.8268419590313,
+  "verification_cpu_seconds": 34.423418,
+  "exhaustive_exported_cases": 12,
+  "verifier_unit_tests": 9,
+  "groth16_valid_proofs_including_warmups_and_aa": 90,
+  "groth16_changed_public_input_rejections": 48,
+  "mode": "LOCAL",
+  "published": false,
+  "maintainer": "unassigned",
+  "review": "author-checked; no independent review",
+  "source_sha256": {
+    "src/main.rs": "a02dccf91f1ac3a36874eed80a2dba58cf378dbae54b3588b2ac341278282fd9",
+    "scripts/verify.py": "69059d65dfb31f164c7b38ff573148c3a60d7d325c6b3e6aca4c54ca4ee74d68",
+    "Cargo.lock": "77246b22b746718713916953397a9e47d9f0a3b00495297967d39f45e202e229"
+  }
+}

@@ -30,8 +30,8 @@ def main():
   rs=[r for r in table if r['instance']==instance]
   if not rs:continue
   r=rs[0];y=130+j*96;b,v=r['baseline_count'],r['value'];width=530
-  svg+=[f'<text x="36" y="{y+20}" class="label">{html.escape(instance)}</text>',f'<rect x="230" y="{y}" width="{width}" height="22" rx="3" fill="#708197"/>',f'<rect x="230" y="{y+29}" width="{width*v/b:.2f}" height="22" rx="3" fill="#37d4ad"/>',f'<text x="780" y="{y+18}" class="label">{b} → {v}</text>',f'<text x="940" y="{y+18}" class="label">{r["reduction_percent"]:.2f}%</text>']
+  svg+=[f'<text x="36" y="{y+20}" class="label">{html.escape(instance)}</text>',f'<rect x="230" y="{y}" width="{width}" height="22" rx="3" fill="#708197"/>',f'<rect x="230" y="{y+29}" width="{width*v/b:.2f}" height="22" rx="3" fill="#37d4ad"/>',f'<text x="780" y="{y+18}" class="label">{b} to {v}</text>',f'<text x="940" y="{y+18}" class="label">{r["reduction_percent"]:.2f}%</text>']
  svg+=['<text x="36" y="640" class="small">Gray: reference. Green: candidate. Each pair has its own scale, starting at zero.</text>','<text x="36" y="665" class="small">Merkle savings are modest. Range-only elimination saves one row. Counts do not guarantee prover speedups.</text>','</svg>']
- (root/'progress.svg').write_text('\n'.join(svg)+'\n')
+ (root/'progress.svg').write_text(('\n'.join(svg)+'\n').replace('<text ', '<text fill="#eef4fa" '))
  print('\n'.join(lines))
 if __name__=='__main__':main()
