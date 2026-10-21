@@ -7,3 +7,9 @@ bottlenecks. Prefer compositions over repeatedly rediscovering the same identity
 
 Review after independent review of the checker or five additional contributor
 sessions, whichever comes first. No intake is open before a maintainer agrees.
+
+## Launch — 21 October 2026
+
+Donor intake opened with @Mister-Meeseeks as maintainer (review capacity `surge`).
+Weights unchanged from revision 1: verification of the checker still comes first, and
+the review trigger above still applies.

@@ -3,7 +3,7 @@
   "priority_revision": 1,
   "assessed_on": "2026-10-20",
   "priority_log": "discover/priority-log.md",
-  "status": "Local proposal; donor intake paused until a maintainer consents.",
+  "status": "Open to donated sessions since 2026-10-21; maintainer @Mister-Meeseeks. Verification of the checker comes first; acceptance stays with the maintainer.",
   "tracks": [
     {
       "id": "verification",

@@ -1,5 +1,9 @@
 # Featured-pilot assessment: sound ZK gadget optimization
 
+> **Historical (2026-10-20).** The recommendation below predates the launch: the project has
+> been open to donated sessions since 2026-10-21, with a maintainer. Current status is in
+> `DISCOVERY.md`; the current recorded values are in `discover/frontier.json`.
+
 **Recommendation: a conditional yes as a technical featured pilot, but not yet the
 sole launch headline.** The trial produced a real, explainable sequence of
 improvements on home-class hardware. It also showed why raw score improvement is

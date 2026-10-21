@@ -1,14 +1,15 @@
 {
   "schema": "discover/v0",
   "title": "Sound R1CS Gadget Optimization",
-  "summary": "Reduce R1CS constraints while checking the full accepted witness relation, with a home-computer contributor trial.",
+  "summary": "Prove the same BN254 R1CS statements with fewer constraints, with every optimized gadget's exported matrices checked against the intended witness relation by an exact-algebra checker, against pinned arkworks baselines.",
   "domains": [
     "cryptography",
     "formal-methods"
   ],
   "maintainers": [
     {
-      "name": "UNASSIGNED \u2014 proposal only; no donor intake"
+      "name": "Doug Colkitt",
+      "github": "Mister-Meeseeks"
     }
   ],
   "canonical_repo": "https://github.com/discoveryathome/zk-gadgets",
@@ -33,12 +34,15 @@
     "verify_fraction": 0.25
   },
   "permissions": {
-    "post_messages": false,
-    "open_prs": false,
+    "post_messages": true,
+    "open_prs": true,
     "maintainer_only": [
+      "change-frontier",
+      "accept-results",
+      "submit-upstream",
+      "license",
       "merge",
-      "close-others-prs",
-      "change-frontier"
+      "close-others-prs"
     ]
   },
   "verification_profile": "exact-certificate",
@@ -51,12 +55,28 @@
     ]
   },
   "review": {
-    "paused": true,
-    "note": "No consenting maintainer or review capacity assigned. Research proposal only; closed to donor intake."
+    "per_week": "surge",
+    "note": "Maintainer: @Mister-Meeseeks, from 2026-10-21. Results are author-checked; independent review of the relation checker (scripts/verify.py) and of each new candidate's relation check, and comparisons against tuned baselines, are wanted before acceptance."
   },
   "requirements": {
     "ram_gb": 4,
     "disk_gb": 1,
     "note": "Python 3.9+ for saved-artifact verification; Rust/Cargo for full synthesis and Groth16 replay. No GPU. Initial build needs network."
+  },
+  "hubs": [
+    {
+      "hub": "discoveryathome/discover",
+      "list": true,
+      "push": []
+    }
+  ],
+  "coordination": {
+    "transport": "github-discussions",
+    "threads": {
+      "start": 1,
+      "handoffs": 2,
+      "proposals": 3,
+      "feedback": 4
+    }
   }
 }
