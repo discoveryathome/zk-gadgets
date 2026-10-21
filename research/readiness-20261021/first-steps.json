@@ -1,0 +1,105 @@
+[
+  {
+    "project": "zk",
+    "task": "verifier-mutations",
+    "command": [
+      "python3",
+      "scripts/test_verifier.py"
+    ],
+    "returncode": 0,
+    "seconds": 0.21505224995780736,
+    "log": "research/readiness-20261021/first-steps/verifier-mutations.log",
+    "log_sha256": "07fc915694afd78ab03a14f43749537168f2e1c6484762e610d0cd4def1a26f1"
+  },
+  {
+    "project": "zk",
+    "task": "composition-depth-2",
+    "command": [
+      "python3",
+      "scripts/check_composition.py",
+      "--candidate",
+      "research/readiness-20261021/export/matrices/composition-2-optimized.json",
+      "--depth",
+      "2"
+    ],
+    "returncode": 0,
+    "seconds": 2.588505042018369,
+    "log": "research/readiness-20261021/first-steps/composition-depth-2.log",
+    "log_sha256": "24299bad061238c82c2ad338dc65b7f3f429a7a469cf0a88a542c38fa8a3a193"
+  },
+  {
+    "project": "zk",
+    "task": "composition-depth-4",
+    "command": [
+      "python3",
+      "scripts/check_composition.py",
+      "--candidate",
+      "research/readiness-20261021/export/matrices/composition-4-optimized.json",
+      "--depth",
+      "4"
+    ],
+    "returncode": 0,
+    "seconds": 3.8559561669826508,
+    "log": "research/readiness-20261021/first-steps/composition-depth-4.log",
+    "log_sha256": "084e4925ebbf2944518a0f2e7c1c5dd21d6a3dc7a845acfc353ddb2053ed27da"
+  },
+  {
+    "project": "zk",
+    "task": "composition-depth-12",
+    "command": [
+      "python3",
+      "scripts/check_composition.py",
+      "--candidate",
+      "research/readiness-20261021/export/matrices/composition-12-optimized.json",
+      "--depth",
+      "12"
+    ],
+    "returncode": 0,
+    "seconds": 10.079071249929257,
+    "log": "research/readiness-20261021/first-steps/composition-depth-12.log",
+    "log_sha256": "a9d78f211046cdf4565bf2f417079d0d9abc41528985c33aee025bd7b7fe136d"
+  },
+  {
+    "project": "zk",
+    "task": "composition-depth-16",
+    "command": [
+      "python3",
+      "scripts/check_composition.py",
+      "--candidate",
+      "research/readiness-20261021/export/matrices/composition-16-optimized.json",
+      "--depth",
+      "16"
+    ],
+    "returncode": 0,
+    "seconds": 13.88500487501733,
+    "log": "research/readiness-20261021/first-steps/composition-depth-16.log",
+    "log_sha256": "085a51705f4db813459d3be4da96518faa159a16896c8599604cb13b34726cd6"
+  },
+  {
+    "project": "zk",
+    "task": "arbitrary-bounds",
+    "command": [
+      "python3",
+      "scripts/verify.py",
+      "--row",
+      "bound-53"
+    ],
+    "returncode": 0,
+    "seconds": 0.3221600000979379,
+    "log": "research/readiness-20261021/first-steps/arbitrary-bounds.log",
+    "log_sha256": "2d0e8d4349f2aeebd20529878e083e9419b702a3e1352de6696b7bc52729ede7"
+  },
+  {
+    "project": "zk",
+    "task": "modern-baselines",
+    "command": [
+      "python3",
+      "-c",
+      "from pathlib import Path; s=Path('protocol/ark-merkle-v0.6.rs').read_text(); assert 'let right_hash = bit.select(&curr_hash, sibling)?;' in s; print('Pinned 0.6 source still uses two selections; executable benchmark is 0.5.')"
+    ],
+    "returncode": 0,
+    "seconds": 0.09004949999507517,
+    "log": "research/readiness-20261021/first-steps/modern-baselines.log",
+    "log_sha256": "51d0cb49e645da82504eb58b00acf4a5d3276f90206572835153fbff98eca206"
+  }
+]

@@ -1,0 +1,5 @@
+bound-53 baseline assignment + native relation only
+bound-53 optimized relation checked
+bound-53 eliminated relation checked
+PASS: 3 matrices; exhaustive 4096 bit assignments; malicious witness negative control; 0.135s
+

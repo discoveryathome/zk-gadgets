@@ -1,0 +1,50 @@
+[
+  {
+    "instance": "composition-2",
+    "method": "baseline",
+    "rows": 744,
+    "nonzeros": 20258
+  },
+  {
+    "instance": "composition-2",
+    "method": "optimized",
+    "rows": 741,
+    "nonzeros": 20266
+  },
+  {
+    "instance": "composition-4",
+    "method": "baseline",
+    "rows": 1230,
+    "nonzeros": 33736
+  },
+  {
+    "instance": "composition-4",
+    "method": "optimized",
+    "rows": 1225,
+    "nonzeros": 33754
+  },
+  {
+    "instance": "composition-12",
+    "method": "baseline",
+    "rows": 3174,
+    "nonzeros": 87648
+  },
+  {
+    "instance": "composition-12",
+    "method": "optimized",
+    "rows": 3161,
+    "nonzeros": 87706
+  },
+  {
+    "instance": "composition-16",
+    "method": "baseline",
+    "rows": 4146,
+    "nonzeros": 114604
+  },
+  {
+    "instance": "composition-16",
+    "method": "optimized",
+    "rows": 4129,
+    "nonzeros": 114682
+  }
+]

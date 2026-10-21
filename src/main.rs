@@ -473,6 +473,13 @@ fn main() {
         cases.push(("merkle", n, vec!["baseline", "optimized"]));
     }
     cases.push(("composition", 8, vec!["baseline", "optimized"]));
+    // A separate preparation suite: never silently alter the frozen pilot suite.
+    if std::env::var("PILOT_SUITE").as_deref() == Ok("readiness-v1") {
+        cases.clear();
+        for n in [2, 4, 12, 16] {
+            cases.push(("composition", n, vec!["baseline", "optimized"]));
+        }
+    }
     if let Ok(families) = std::env::var("PILOT_FAMILIES") {
         cases.retain(|(f, _, _)| families.split(',').any(|x| x == *f));
     }

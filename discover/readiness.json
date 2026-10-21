@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "date": "2026-10-21",
+  "status": "local-preparation; scientific review pending",
+  "package": "research/readiness-20261021/README.md",
+  "portfolio": "research/readiness-20261021/checks.json",
+  "first_step": "python3 scripts/check_composition.py --candidate research/readiness-20261021/export/matrices/composition-2-optimized.json --depth 2",
+  "external_gates": [
+    "Independent cryptographic soundness review",
+    "Quiet-machine prover replication for performance claims",
+    "Fresh contributor trials and an explicit reviewer capacity"
+  ],
+  "preparation_status": "complete for scoped external review",
+  "independent_review": "pending",
+  "integrity_check": "python research/readiness-20261021/check_manifest.py"
+}

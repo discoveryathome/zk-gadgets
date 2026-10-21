@@ -41,3 +41,7 @@ Credit contributors and reviewers in `CONTRIBUTORS.md`; preserve upstream citati
 New project code/docs use MIT; third-party snapshots retain their licenses.
 Changes to the verifier or frontier deserve the most scrutiny. Review capacity,
 not donated compute, will set the pace.
+
+## Second-cohort preparation (2026-10-21)
+
+For the refreshed task pool, read [the preparation package](research/readiness-20261021/README.md) and `discover/readiness.json`. These versioned portfolios provide the starting witnesses for the new catalogue cards. They do not retroactively change historical experiments or grant public donor intake.

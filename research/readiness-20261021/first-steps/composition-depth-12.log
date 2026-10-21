@@ -1,0 +1,15 @@
+{
+  "depth": 12,
+  "rows": 3161,
+  "nonzeros": 87706,
+  "witness_variables": 3172,
+  "relation": {
+    "derived_variables": 3132,
+    "boolean_roots_checked": 28,
+    "range_bindings_checked": 1,
+    "expression_nodes": 3209
+  },
+  "seconds": 9.939259917000001,
+  "sha256": "3ef9f50ef50ae10c3af86f009a3ff16853982e372cf49efc3b2dedc584cb36c5"
+}
+

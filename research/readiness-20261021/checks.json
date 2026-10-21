@@ -1,0 +1,145 @@
+{
+  "formulation": "bn254-r1cs-v1; readiness composition portfolio v1",
+  "status": "author-checked; independent soundness review pending",
+  "exposure": "All cases are now public development benchmarks; no sealed holdout claim.",
+  "starting_method": "optimized",
+  "rows": [
+    {
+      "instance": "composition-2",
+      "method": "baseline",
+      "path": "research/readiness-20261021/export/matrices/composition-2-baseline.json",
+      "depth": 2,
+      "rows": 744,
+      "nonzeros": 20258,
+      "witness_variables": 745,
+      "relation": {
+        "derived_variables": 725,
+        "boolean_roots_checked": 18,
+        "range_bindings_checked": 1,
+        "expression_nodes": 748
+      },
+      "seconds": 0.43469433300197124,
+      "sha256": "80ae12096dbe3112581e283bc7457ddaa63ed8ca028d87f3876f17d60a5b71f2"
+    },
+    {
+      "instance": "composition-2",
+      "method": "optimized",
+      "path": "research/readiness-20261021/export/matrices/composition-2-optimized.json",
+      "depth": 2,
+      "rows": 741,
+      "nonzeros": 20266,
+      "witness_variables": 742,
+      "relation": {
+        "derived_variables": 722,
+        "boolean_roots_checked": 18,
+        "range_bindings_checked": 1,
+        "expression_nodes": 749
+      },
+      "seconds": 0.4219639579532668,
+      "sha256": "08c887ec074b6f108c2edb9d40a762f07281a12e1651c3734a7238e1f8be11bc"
+    },
+    {
+      "instance": "composition-4",
+      "method": "baseline",
+      "path": "research/readiness-20261021/export/matrices/composition-4-baseline.json",
+      "depth": 4,
+      "rows": 1230,
+      "nonzeros": 33736,
+      "witness_variables": 1233,
+      "relation": {
+        "derived_variables": 1209,
+        "boolean_roots_checked": 20,
+        "range_bindings_checked": 1,
+        "expression_nodes": 1240
+      },
+      "seconds": 0.7515843330183998,
+      "sha256": "7dd5ef2ba0609858dd2b959591f39c62de0eca353bcfb893e05a46870c9e2265"
+    },
+    {
+      "instance": "composition-4",
+      "method": "optimized",
+      "path": "research/readiness-20261021/export/matrices/composition-4-optimized.json",
+      "depth": 4,
+      "rows": 1225,
+      "nonzeros": 33754,
+      "witness_variables": 1228,
+      "relation": {
+        "derived_variables": 1204,
+        "boolean_roots_checked": 20,
+        "range_bindings_checked": 1,
+        "expression_nodes": 1241
+      },
+      "seconds": 0.7695042089326307,
+      "sha256": "80b3f16f0b05b50a3805a4fd4b495f7ec4f3955c2a91bcda2c2e7a3a8dc8e8eb"
+    },
+    {
+      "instance": "composition-12",
+      "method": "baseline",
+      "path": "research/readiness-20261021/export/matrices/composition-12-baseline.json",
+      "depth": 12,
+      "rows": 3174,
+      "nonzeros": 87648,
+      "witness_variables": 3185,
+      "relation": {
+        "derived_variables": 3145,
+        "boolean_roots_checked": 28,
+        "range_bindings_checked": 1,
+        "expression_nodes": 3208
+      },
+      "seconds": 2.029155332944356,
+      "sha256": "19617fedf1824bd8c922331eb6e032a6c0ed7f8acb758cfc35fd21e10a0b6871"
+    },
+    {
+      "instance": "composition-12",
+      "method": "optimized",
+      "path": "research/readiness-20261021/export/matrices/composition-12-optimized.json",
+      "depth": 12,
+      "rows": 3161,
+      "nonzeros": 87706,
+      "witness_variables": 3172,
+      "relation": {
+        "derived_variables": 3132,
+        "boolean_roots_checked": 28,
+        "range_bindings_checked": 1,
+        "expression_nodes": 3209
+      },
+      "seconds": 2.0555211659520864,
+      "sha256": "3ef9f50ef50ae10c3af86f009a3ff16853982e372cf49efc3b2dedc584cb36c5"
+    },
+    {
+      "instance": "composition-16",
+      "method": "baseline",
+      "path": "research/readiness-20261021/export/matrices/composition-16-baseline.json",
+      "depth": 16,
+      "rows": 4146,
+      "nonzeros": 114604,
+      "witness_variables": 4161,
+      "relation": {
+        "derived_variables": 4113,
+        "boolean_roots_checked": 32,
+        "range_bindings_checked": 1,
+        "expression_nodes": 4192
+      },
+      "seconds": 3.1259242920204997,
+      "sha256": "7a9104e6e6a181f206deb5dbfba338c3fb3ca2307077fcc50620b7b6c03bac10"
+    },
+    {
+      "instance": "composition-16",
+      "method": "optimized",
+      "path": "research/readiness-20261021/export/matrices/composition-16-optimized.json",
+      "depth": 16,
+      "rows": 4129,
+      "nonzeros": 114682,
+      "witness_variables": 4144,
+      "relation": {
+        "derived_variables": 4096,
+        "boolean_roots_checked": 32,
+        "range_bindings_checked": 1,
+        "expression_nodes": 4193
+      },
+      "seconds": 3.2297621249454096,
+      "sha256": "c75165c8c24712733ff58a8900748dbc0f7325d349130709db697929930c9043"
+    }
+  ],
+  "performance_claim": "Exact circuit costs only; no prover speedup measured."
+}
