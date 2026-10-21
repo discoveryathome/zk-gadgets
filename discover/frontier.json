@@ -1,7 +1,7 @@
 {
   "schema": "discover-frontier/v0",
   "statement": "Pinned BN254 R1CS suite: 26 scoped instances, 73 implementation cases. Arithmetic factoring/fusion reduces 192 to 64 rows for 64 expressions; published range encoding plus witness elimination reduces x<13 from 10 to 4; range-only 64-bit predicate reduces 65 to 64 rows with unchanged multiplication count; field-valued depth-8 Merkle ordering reduces 2182 to 2174. Known-technique implementations, not global optima or novelty claims.",
-  "status": "Local pilot; author-checked candidate records; not accepted by an independent reviewer or maintainer",
+  "status": "Open to donated sessions since 2026-10-21; maintainer @Mister-Meeseeks. Author-checked candidate records, not yet accepted by an independent reviewer or the maintainer.",
   "evidence_level": [
     "author-checked"
   ],
