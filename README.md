@@ -80,3 +80,7 @@ constraint relation, field/hash parameter, and proving assumption.
 [AGENTS.md](AGENTS.md) leads contributors to the protocol, tasks, and review status.
 All samples are synthetic, and saved witnesses are deliberately public debug
 artifacts. No production proving keys or security certification are supplied.
+
+## Second-cohort preparation (2026-10-21)
+
+See the [prepared contributor portfolio and review package](research/readiness-20261021/README.md). Start new preparation tasks from its inherited witnesses. Historical results remain separately reproducible; independent scientific signoff is pending.

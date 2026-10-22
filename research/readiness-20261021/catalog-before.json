@@ -1,0 +1,179 @@
+{
+  "schema": "discover-catalog/v0",
+  "priority_revision": 1,
+  "assessed_on": "2026-10-20",
+  "priority_log": "discover/priority-log.md",
+  "status": "Local proposal; donor intake paused until a maintainer consents.",
+  "tracks": [
+    {
+      "id": "verification",
+      "weight": 35,
+      "useful_outcome": "A new soundness counterexample, or a reviewed extension with positive and negative controls.",
+      "tasks": [
+        {
+          "id": "verifier-mutations",
+          "question": "Can an adversarial candidate evade the restricted relation checker?",
+          "starting_points": [
+            "scripts/verify.py",
+            "scripts/test_verifier.py",
+            "FORMULATION.md"
+          ],
+          "methods": [
+            "Exact elimination",
+            "mutation testing",
+            "compositional proof rules"
+          ],
+          "acceptance_gate": "A new soundness counterexample, or a reviewed extension with positive and negative controls.",
+          "first_step": {
+            "command": [
+              "python3",
+              "scripts/test_verifier.py"
+            ],
+            "expected": "All verifier negative-control tests pass."
+          },
+          "bottleneck_link": "DISCOVERY.md",
+          "claim_kind": [
+            "exact",
+            "argument"
+          ],
+          "existing_checks": [
+            {
+              "scope": "One local author-run trial; see results and report for coverage.",
+              "evidence": "research/trial/REPORT.md",
+              "remaining": "Independent review and additional compositions.",
+              "status": "author-checked"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "compositions",
+      "weight": 30,
+      "useful_outcome": "Same interface and hash; cheaper than a tuned baseline on new compositions; relation check passes.",
+      "tasks": [
+        {
+          "id": "shared-subexpressions",
+          "question": "Can reuse or constraint fusion reduce realistic compositions beyond these elementary wins?",
+          "starting_points": [
+            "src/main.rs",
+            "results/benchmarks.json",
+            "FORMULATION.md"
+          ],
+          "methods": [
+            "Common-subexpression reuse",
+            "direct relation encodings"
+          ],
+          "acceptance_gate": "Same interface and hash; cheaper than a tuned baseline on new compositions; relation check passes.",
+          "first_step": {
+            "command": [
+              "python3",
+              "scripts/verify.py",
+              "--row",
+              "arithmetic-7"
+            ],
+            "expected": "Three arithmetic matrices pass, including the fused candidate."
+          },
+          "bottleneck_link": "DISCOVERY.md",
+          "claim_kind": [
+            "exact",
+            "argument"
+          ],
+          "existing_checks": [
+            {
+              "scope": "One local author-run trial; see results and report for coverage.",
+              "evidence": "research/trial/REPORT.md",
+              "remaining": "Independent review and additional compositions.",
+              "status": "author-checked"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "range-encodings",
+      "weight": 25,
+      "useful_outcome": "Exact accepted set preserved; noncanonical witnesses explicitly isolated from bit consumers.",
+      "tasks": [
+        {
+          "id": "arbitrary-bounds",
+          "question": "Which bounded range relations benefit from alternative digit encodings without promising canonical bits?",
+          "starting_points": [
+            "SOURCES.md",
+            "FORMULATION.md",
+            "research/trial/ROUND2.md"
+          ],
+          "methods": [
+            "Bounded exhaustive checking",
+            "literature replication"
+          ],
+          "acceptance_gate": "Exact accepted set preserved; noncanonical witnesses explicitly isolated from bit consumers.",
+          "first_step": {
+            "command": [
+              "python3",
+              "scripts/verify.py",
+              "--row",
+              "bound-53"
+            ],
+            "expected": "Two bound-53 matrices checked; optimized relation and exhaustive accepted values pass."
+          },
+          "bottleneck_link": "DISCOVERY.md",
+          "claim_kind": [
+            "exact",
+            "argument"
+          ],
+          "existing_checks": [
+            {
+              "scope": "One local author-run trial; see results and report for coverage.",
+              "evidence": "research/trial/REPORT.md",
+              "remaining": "Independent review and additional compositions.",
+              "status": "author-checked"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "baseline-audit",
+      "weight": 10,
+      "useful_outcome": "Pinned executable comparison or a documented null result; no unsupported novelty claim.",
+      "tasks": [
+        {
+          "id": "modern-baselines",
+          "question": "Do the savings survive comparison to newer libraries and optimized application code?",
+          "starting_points": [
+            "SOURCES.md",
+            "protocol/ark-merkle-v0.6.rs",
+            "Cargo.lock"
+          ],
+          "methods": [
+            "Source audit",
+            "controlled replication"
+          ],
+          "acceptance_gate": "Pinned executable comparison or a documented null result; no unsupported novelty claim.",
+          "first_step": {
+            "command": [
+              "python3",
+              "-c",
+              "from pathlib import Path; s=Path('protocol/ark-merkle-v0.6.rs').read_text(); assert 'let right_hash = bit.select(&curr_hash, sibling)?;' in s; print('Pinned 0.6 source still uses two selections; executable benchmark is 0.5.')"
+            ],
+            "expected": "The pinned newer source pattern is present."
+          },
+          "bottleneck_link": "DISCOVERY.md",
+          "claim_kind": [
+            "exact",
+            "argument"
+          ],
+          "existing_checks": [
+            {
+              "scope": "One local author-run trial; see results and report for coverage.",
+              "evidence": "research/trial/REPORT.md",
+              "remaining": "Independent review and additional compositions.",
+              "status": "author-checked"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

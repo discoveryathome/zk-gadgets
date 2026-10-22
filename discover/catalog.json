@@ -1,7 +1,7 @@
 {
   "schema": "discover-catalog/v0",
-  "priority_revision": 1,
-  "assessed_on": "2026-10-20",
+  "priority_revision": 2,
+  "assessed_on": "2026-10-21",
   "priority_log": "discover/priority-log.md",
   "status": "Open to donated sessions since 2026-10-21; maintainer @Mister-Meeseeks. Verification of the checker comes first; acceptance stays with the maintainer.",
   "tracks": [
@@ -53,40 +53,124 @@
       "useful_outcome": "Same interface and hash; cheaper than a tuned baseline on new compositions; relation check passes.",
       "tasks": [
         {
-          "id": "shared-subexpressions",
-          "question": "Can reuse or constraint fusion reduce realistic compositions beyond these elementary wins?",
+          "id": "composition-depth-2",
+          "question": "Can the depth-2 composition improve beyond its inherited optimized implementation?",
           "starting_points": [
-            "src/main.rs",
-            "results/benchmarks.json",
-            "FORMULATION.md"
+            "research/readiness-20261021/README.md",
+            "scripts/check_composition.py",
+            "research/readiness-20261021/checks.json"
           ],
           "methods": [
-            "Common-subexpression reuse",
-            "direct relation encodings"
+            "Bounded experiment from inherited witness; retain all results and exact provenance"
           ],
-          "acceptance_gate": "Same interface and hash; cheaper than a tuned baseline on new compositions; relation check passes.",
+          "acceptance_gate": "Preserve fixed field/hash/interface; exact relation and negative controls pass. Report rows and nonzeros; no unmeasured prover speedup.",
           "first_step": {
             "command": [
               "python3",
-              "scripts/verify.py",
-              "--row",
-              "arithmetic-7"
+              "scripts/check_composition.py",
+              "--candidate",
+              "research/readiness-20261021/export/matrices/composition-2-optimized.json",
+              "--depth",
+              "2"
             ],
-            "expected": "Three arithmetic matrices pass, including the fused candidate."
+            "expected": "Positive control passes; independent scientific review remains pending."
           },
-          "bottleneck_link": "DISCOVERY.md",
+          "bottleneck_link": "research/readiness-20261021/REVIEW.md",
           "claim_kind": [
             "exact",
-            "argument"
+            "measured"
           ],
-          "existing_checks": [
-            {
-              "scope": "One local author-run trial; see results and report for coverage.",
-              "evidence": "research/trial/REPORT.md",
-              "remaining": "Independent review and additional compositions.",
-              "status": "author-checked"
-            }
-          ]
+          "first_experiment": "Spend at most 30 minutes on one scoped experiment; reserve the final 10 minutes for checking and a reproducible local handoff."
+        },
+        {
+          "id": "composition-depth-4",
+          "question": "Can the depth-4 composition improve beyond its inherited optimized implementation?",
+          "starting_points": [
+            "research/readiness-20261021/README.md",
+            "scripts/check_composition.py",
+            "research/readiness-20261021/checks.json"
+          ],
+          "methods": [
+            "Bounded experiment from inherited witness; retain all results and exact provenance"
+          ],
+          "acceptance_gate": "Preserve fixed field/hash/interface; exact relation and negative controls pass. Report rows and nonzeros; no unmeasured prover speedup.",
+          "first_step": {
+            "command": [
+              "python3",
+              "scripts/check_composition.py",
+              "--candidate",
+              "research/readiness-20261021/export/matrices/composition-4-optimized.json",
+              "--depth",
+              "4"
+            ],
+            "expected": "Positive control passes; independent scientific review remains pending."
+          },
+          "bottleneck_link": "research/readiness-20261021/REVIEW.md",
+          "claim_kind": [
+            "exact",
+            "measured"
+          ],
+          "first_experiment": "Spend at most 30 minutes on one scoped experiment; reserve the final 10 minutes for checking and a reproducible local handoff."
+        },
+        {
+          "id": "composition-depth-12",
+          "question": "Can the depth-12 composition improve beyond its inherited optimized implementation?",
+          "starting_points": [
+            "research/readiness-20261021/README.md",
+            "scripts/check_composition.py",
+            "research/readiness-20261021/checks.json"
+          ],
+          "methods": [
+            "Bounded experiment from inherited witness; retain all results and exact provenance"
+          ],
+          "acceptance_gate": "Preserve fixed field/hash/interface; exact relation and negative controls pass. Report rows and nonzeros; no unmeasured prover speedup.",
+          "first_step": {
+            "command": [
+              "python3",
+              "scripts/check_composition.py",
+              "--candidate",
+              "research/readiness-20261021/export/matrices/composition-12-optimized.json",
+              "--depth",
+              "12"
+            ],
+            "expected": "Positive control passes; independent scientific review remains pending."
+          },
+          "bottleneck_link": "research/readiness-20261021/REVIEW.md",
+          "claim_kind": [
+            "exact",
+            "measured"
+          ],
+          "first_experiment": "Spend at most 30 minutes on one scoped experiment; reserve the final 10 minutes for checking and a reproducible local handoff."
+        },
+        {
+          "id": "composition-depth-16",
+          "question": "Can the depth-16 composition improve beyond its inherited optimized implementation?",
+          "starting_points": [
+            "research/readiness-20261021/README.md",
+            "scripts/check_composition.py",
+            "research/readiness-20261021/checks.json"
+          ],
+          "methods": [
+            "Bounded experiment from inherited witness; retain all results and exact provenance"
+          ],
+          "acceptance_gate": "Preserve fixed field/hash/interface; exact relation and negative controls pass. Report rows and nonzeros; no unmeasured prover speedup.",
+          "first_step": {
+            "command": [
+              "python3",
+              "scripts/check_composition.py",
+              "--candidate",
+              "research/readiness-20261021/export/matrices/composition-16-optimized.json",
+              "--depth",
+              "16"
+            ],
+            "expected": "Positive control passes; independent scientific review remains pending."
+          },
+          "bottleneck_link": "research/readiness-20261021/REVIEW.md",
+          "claim_kind": [
+            "exact",
+            "measured"
+          ],
+          "first_experiment": "Spend at most 30 minutes on one scoped experiment; reserve the final 10 minutes for checking and a reproducible local handoff."
         }
       ]
     },

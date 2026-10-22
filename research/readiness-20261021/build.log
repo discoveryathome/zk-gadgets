@@ -1,0 +1,19 @@
+   Compiling zk-gadget-pilot v0.1.0 (/Users/colkitt/discover-work/incubatedPilots/zk-gadgets/start-zk-gadgets)
+    Finished `release` profile [optimized] target(s) in 18.85s
+     Running `target/release/zk-gadget-pilot research/readiness-20261021/export`
+Constraint trace requires enabling `ConstraintLayer`
+composition-2-baseline: 744 rows
+Constraint trace requires enabling `ConstraintLayer`
+composition-2-optimized: 741 rows
+Constraint trace requires enabling `ConstraintLayer`
+composition-4-baseline: 1230 rows
+Constraint trace requires enabling `ConstraintLayer`
+composition-4-optimized: 1225 rows
+Constraint trace requires enabling `ConstraintLayer`
+composition-12-baseline: 3174 rows
+Constraint trace requires enabling `ConstraintLayer`
+composition-12-optimized: 3161 rows
+Constraint trace requires enabling `ConstraintLayer`
+composition-16-baseline: 4146 rows
+Constraint trace requires enabling `ConstraintLayer`
+composition-16-optimized: 4129 rows
