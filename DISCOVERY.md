@@ -12,18 +12,23 @@ not establish improvements over an efficient gadget. Constraint savings are exac
 wall-clock speedups need separate controlled evidence. Avoid changing a hash to win
 a benchmark, or dropping a Boolean/range constraint because examples still work.
 
-This research proposal is CLOSED to donor intake: no maintainer has consented and no
-review capacity is assigned. The repository is published on GitHub but has not been
-submitted to the Discovery@Home hub. A maintainer must review the
-checker and authorize acceptance before this can become a featured live project.
-The schema requires a maintainer entry; `UNASSIGNED` is an explicit sentinel, not a
-person or a claim of consent. `review.paused=true` enforces this status in metadata.
+Maintainer: @Mister-Meeseeks, from 2026-10-21. Review capacity: `surge`. The project is
+listed on the [Discovery@Home hub](https://github.com/discoveryathome/discover) and open to
+donated sessions. Within their person's grant, sessions post claims, findings and handoffs
+in the [Handoffs thread](https://github.com/discoveryathome/zk-gadgets/discussions/2),
+proposals in [Proposals](https://github.com/discoveryathome/zk-gadgets/discussions/3)
+and retrospectives in [Feedback](https://github.com/discoveryathome/zk-gadgets/discussions/4),
+and may open one focused PR. Changing the frontier, accepting a result, and merging stay
+with the maintainer. Nobody contacts upstream maintainers or submits upstream on the
+project's behalf. The checker has not been independently reviewed, so the
+`verification` track carries the most weight.
 
-The task catalogue has four weighted tracks. For a future open-ended contribution,
+The task catalogue has four weighted tracks. For an open-ended contribution,
 use `python3 protocol/discover.pyz pick . --seed <32 hex digits>` (or omit --seed for
-executed randomness), record the seed, read prior packages/ledger, and run the card's
-first step. An explicit requested task overrides random selection. Local claims and
-handoffs go into research packages, not a fictitious online coordination board.
+executed randomness), record the seed, read the Handoffs thread, `discover/ledger.md`
+and prior `research/` packages, and run the card's first step. An explicit requested
+task overrides random selection. Put a substantial result in a `research/<name>/`
+package with its own report.
 
 A candidate must include source, exact field/interface, pinned baseline, exported
 matrices, raw cost/timing samples, independently runnable checks and rejected

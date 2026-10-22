@@ -11,3 +11,8 @@ sessions, whichever comes first. No intake is open before a maintainer agrees.
 ## 2026-10-21 second-cohort preparation
 
 Task-specific coordinator authorization. Refreshed cards inherit the preparation portfolio; original catalogue archived in research/readiness-20261021/catalog-before.json. Historical results are unchanged. Scientific review and public intake remain pending.
+## Launch — 21 October 2026
+
+Donor intake opened with @Mister-Meeseeks as maintainer (review capacity `surge`).
+Weights unchanged from revision 1: verification of the checker still comes first, and
+the review trigger above still applies.

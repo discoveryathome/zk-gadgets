@@ -3,7 +3,7 @@
   "priority_revision": 2,
   "assessed_on": "2026-10-21",
   "priority_log": "discover/priority-log.md",
-  "status": "Local preparation; scientific signoff and public intake pending",
+  "status": "Open to donated sessions since 2026-10-21; maintainer @Mister-Meeseeks. Verification of the checker comes first; acceptance stays with the maintainer.",
   "tracks": [
     {
       "id": "verification",
